@@ -1,0 +1,50 @@
+extends ./layout.jade
+
+block title
+	title 首页
+
+block content
+
+	//判断是否有session_id这个cookie决定显示哪个
+
+	section#loginSection
+
+		h1 Login Form
+			
+		form(action="/user/login",method="post",id="formData" , class="loginBox")
+			div.form-group
+				label
+					| 手机号
+				input(type="number" , name="phone")
+			.form-group
+				label
+					| 密码
+				input(type="password" , name="password")
+			.form-group.loginBox_btn
+				input(type="submit" , value="登陆")
+				button 注册
+
+	section(style={"display":"block"})#manageSection
+		h1 Manage 
+		ul.index_manage
+			li
+				a(href="#")
+					|收货界面
+			li
+				a(href="#")
+					|交易查看界面
+			li
+				a(href="#")
+					|品种管理
+			li
+				a(href="#")
+					|数据统计
+			li
+				a(href="#")
+					|退出
+
+	section(style={"display":"none"})#registSection
+		h2
+			|注册界面
+
+	script(src="/js/test.js")

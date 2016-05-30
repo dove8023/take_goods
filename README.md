@@ -1,2 +1,6 @@
-# mytest
-using test.
+
+# take_goods
+take goods system.
+
+
+

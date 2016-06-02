@@ -1,0 +1,25 @@
+{
+  "name": "take_goods",
+  "homepage": "https://github.com/dove8023/take_goods",
+  "authors": [
+    "Mr.He"
+  ],
+  "description": "receving goods system.",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "requirejs": "^2.2.0"
+  },
+  "devDependencies": {
+    "angular-cookies": "^1.5.6"
+  }
+}

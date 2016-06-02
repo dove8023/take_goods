@@ -4,7 +4,7 @@
 */
 
 var result;
-
+console.log(document.cookie);
 
 var formE = $("#formData");
 formE.find('input[type="submit"]').on("click" , function(event){
@@ -22,6 +22,8 @@ formE.find('input[type="submit"]').on("click" , function(event){
 			console.log(data);
 			result = data;
 
+
+
 			if(document.cookie.indexOf("session_id") > -1){
 				$("#loginSection").hide();
 				$("#manageSection").show();
@@ -32,4 +34,13 @@ formE.find('input[type="submit"]').on("click" , function(event){
 		}
 	});
 })
+
+
+
+
+if(document.cookie.indexOf("session_id") > -1){
+	$("#loginSection").hide();
+	$("#manageSection").show();
+}
+
 

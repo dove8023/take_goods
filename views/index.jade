@@ -7,6 +7,9 @@ block content
 
 	//判断是否有session_id这个cookie决定显示哪个
 
+	div(ng-controller="Test")
+		| {{what}}
+
 	section#loginSection
 
 		h1 Login Form
@@ -34,17 +37,17 @@ block content
 				a(href="#")
 					|交易查看界面
 			li
-				a(href="#")
+				a(href="/type/")
 					|品种管理
 			li
 				a(href="#")
 					|数据统计
 			li
-				a(href="#")
+				a(href="/user/loginout")
 					|退出
 
 	section(style={"display":"none"})#registSection
 		h2
 			|注册界面
 
-	script(src="/js/test.js")
+	script(src="/js/index.js")

@@ -19,7 +19,12 @@ router.use(function(req , res , next){
 
 
 
-
+/* 退出接口 */
+router.get("/loginout" , function( req , res , next ){
+	res.cookie("session_id" , null , 0);
+	req.session.user = {};
+	res.redirect("/");
+});
 
 
 
@@ -28,6 +33,7 @@ router.use(function(req , res , next){
 
 
 /* ========== /user/api/  接口部分 ========== */
+
 
 
 
@@ -72,6 +78,9 @@ router.post("/api/login" , function(req , res , next){
 		next();
 	}
 });
+
+
+
 
 
 

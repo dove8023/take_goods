@@ -17,7 +17,9 @@
   ],
   "dependencies": {
     "angular": "^1.5.5",
-    "requirejs": "^2.2.0"
+    "requirejs": "^2.2.0",
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
   },
   "devDependencies": {
     "angular-cookies": "^1.5.6"

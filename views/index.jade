@@ -2,32 +2,30 @@ extends ./layout.jade
 
 block title
 	title 首页
+	link(href="/css/index.css",rel="stylesheet")
 
 block content
 
 	//判断是否有session_id这个cookie决定显示哪个
 
-	div(ng-controller="Test")
-		| {{what}}
-
-	section#loginSection
+	section#loginSection(ng-controller="Login", ng-show="!Logined")
 
 		h1 Login Form
 			
-		form(action="/user/login",method="post",id="formData" , class="loginBox")
+		form(id="formData" , class="loginBox" , ng-submit="loginFn(event)")
 			div.form-group
 				label
 					| 手机号
-				input(type="number" , name="phone")
+				input(type="text" , name="phone" ,ng-model="phoneNumber" , placeholder="请输入手机号码")
 			.form-group
 				label
 					| 密码
-				input(type="password" , name="password")
-			.form-group.loginBox_btn
-				input(type="submit" , value="登陆")
-				button 注册
+				input(type="password" , name="password" ,ng-model="password" , placeholder="请输入密码")
+			.form-group.loginBox_btn.clearfix
+				input(type="submit" , value="登陆" , class="fl")
+				button(class="fl") 注册
 
-	section(style={"display":"block"})#manageSection
+	section(ng-show="Logined" , ng-controller="Manage")#manageSection
 		h1 Manage 
 		ul.index_manage
 			li

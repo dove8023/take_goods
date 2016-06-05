@@ -1,0 +1,101 @@
+/*
+ * content @ type page style.
+ * time    @ 2016.6.3
+ * author  @ Mr.He
+*/
+
+.type_box{
+	width: 600px;
+	margin: 50px auto;
+}
+.type_list{
+	
+}
+.type_list li{
+	line-height: 30px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	padding: 5px;
+	border: 1px solid #090;
+	border-radius: 5px;
+}
+.type_list b,
+.type_list strong,
+.type_list em,
+.type_list span,
+.type_list button{
+	float: left;
+	margin-right: 15px;
+}
+.type_list b{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	color: #fff;
+	background: #090;
+	font-weight: bold;
+	border-radius: 50%;
+}
+.type_list strong{
+	font-weight: bold;
+}
+.type_list em{
+	text-decoration: underline;
+}
+.type_list span{
+	font-size: 12px;
+	color: #ccc;
+}
+.type_list button{
+	height: 30px;
+	float: right;
+	padding: 0 5px;
+	background: #090;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.type_additem{
+	background: #090;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.changeBox h3{
+	padding: 5px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	border-bottom: 1px solid #ccc;
+}
+.changeBox h3 span{
+	width: 17px;
+	height: 17px;
+	line-height: 17px;
+	border-radius: 50%;
+	background: #090;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	padding: 3px;
+	font-size: 16px;
+}
+.changeBox label{
+	margin-right: 5px;
+}
+.changeBox input{
+	padding: 5px;
+	width: 200px;
+}
+.changeBox .fr.btn{
+	background: red;
+}
+.changeBox div:last-child{
+	padding: 0 20px;
+}
+
+
+
+

@@ -4,14 +4,49 @@
  * author@Mr.He
 */
 
-require(["angular" , "angularCookies"] , function( angular , angularCookies){
-	var app = angular.module("myApp" , ["ngCookies"]);
+require(["angular" , "angularCookies" , "./common/angular_config"] , function( angular , angularCookies , angular_config){
 
-	app.controller("Test" , function($scope , $cookies){
-		$scope.what = "12345678";
+	var app = angular.module("myApp" , ["ngCookies" , "angular_config"]);
 
-		// console.log($cookies);
-	});
+
+	/* 登陆模块 */
+	app.controller("Login" , [ "$scope" , "$rootScope" , "$http" , "$cookies" , function($scope , $rootScope , $http , $cookies){
+		$rootScope.Logined = false;
+		console.log($cookies.get("session_id"))
+		if($cookies.get("session_id")){
+			$cookies.get("session_id").length == 32 ? $rootScope.Logined = true : $rootScope.Logined = false;
+		}
+
+		$scope.loginFn = function(){
+			if($scope.password == ""){
+				alert("password need.");
+				return false;
+			}
+
+			if($scope.phoneNumber.length != 11){
+				alert("Need a real phone number");
+				return false;
+			}
+
+			$http.post("/user/api/login" , {
+				"phone" : $scope.phoneNumber ,
+				"password" : $scope.password
+			}).success(function(result){
+				if(result.state == 1){
+					$rootScope.Logined = true;
+
+				}else{
+					alert(result.msg);
+				}
+				console.log(result);
+			})
+		}
+	}]);
+
+
+	app.controller("Manage" , ["$scope" , function($scope){
+
+	}]);
 
 	angular.bootstrap(document , ["myApp"]);
 });

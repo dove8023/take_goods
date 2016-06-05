@@ -29,7 +29,7 @@ app.use(session({
 	"secret":"mysecret",
 	"resave":false,
 	"saveUninitialized":true,
-	"cookie":{ maxAge : 20000 }
+	"cookie":{ maxAge : 7200000 }
 }));
 
 
@@ -44,6 +44,10 @@ app.use(function(req , res , next){
 	if(!user){
 		user = req.session.user = {};
 	}
+
+	console.log('%s %s %s' , req.method , req.url , req.path);
+
+	console.log(req.session.user);
 	next();
 });
 

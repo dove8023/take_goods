@@ -13,7 +13,7 @@ var router = express.Router();
 /* all /user  request  will be here.  */
 
 router.use(function(req , res , next){
-	console.log("%s %s %s" , req.method , req.url , req.path);
+	// console.log("%s %s %s" , req.method , req.url , req.path);
 	next();
 });
 
@@ -39,7 +39,9 @@ router.get("/loginout" , function( req , res , next ){
 
 /* request user/api/login */
 router.post("/api/login" , function(req , res , next){
-	console.log("post enter");
+	// console.log("post enter");
+	/*console.log(req.body);
+	console.log(req.body.phone , req.body.password);*/
 	if(req.body.phone && req.body.password){
 		
 		//逻辑应该是，先查找phone，是否已经注册了，然后看密码是否正确。
@@ -55,6 +57,7 @@ router.post("/api/login" , function(req , res , next){
 			}else{
 				var data = result.dataValues;
 
+				console.log(data);
 				//the password shuold be encrypted.
 				if(data.password == req.body.password){
 					
@@ -63,7 +66,7 @@ router.post("/api/login" , function(req , res , next){
 					req.session.user.phone= data.phone;
 					req.session.user.id   = data.id;
 					req.session.user.session_id = req.sessionID;
-					res.cookie("session_id" , req.sessionID);
+					res.cookie("session_id" , req.sessionID , { maxAge : 7200000 });
 
 					res.json({"state":1, "msg" : "login Success" , "data":data});
 				}else{

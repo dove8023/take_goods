@@ -38,9 +38,10 @@
 }
 .type_list strong{
 	font-weight: bold;
+	min-width: 100px;
 }
 .type_list em{
-	text-decoration: underline;
+	color: #999;
 }
 .type_list span{
 	font-size: 12px;
@@ -83,7 +84,7 @@
 	font-size: 16px;
 }
 .changeBox label{
-	margin-right: 5px;
+	margin-right: 10px;
 }
 .changeBox input{
 	padding: 5px;
@@ -94,6 +95,9 @@
 }
 .changeBox div:last-child{
 	padding: 0 20px;
+}
+.type_list .m0{
+	margin: 0;
 }
 
 

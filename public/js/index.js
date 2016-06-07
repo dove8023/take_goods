@@ -12,7 +12,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 	/* 登陆模块 */
 	app.controller("Login" , [ "$scope" , "$rootScope" , "$http" , "$cookies" , function($scope , $rootScope , $http , $cookies){
 		$rootScope.Logined = false;
-		console.log($cookies.get("session_id"))
+		// console.log($cookies.get("session_id"))
 		if($cookies.get("session_id")){
 			$cookies.get("session_id").length == 32 ? $rootScope.Logined = true : $rootScope.Logined = false;
 		}
@@ -34,12 +34,20 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 			}).success(function(result){
 				if(result.state == 1){
 					$rootScope.Logined = true;
-
+					localStorage.setItem("phone" , result.data.phone);
+					localStorage.setItem("password" , result.data.password);
 				}else{
 					alert(result.msg);
 				}
 				console.log(result);
 			})
+		}
+
+		if(localStorage.getItem("phone")){
+			$scope.phoneNumber = localStorage.getItem("phone");
+		}
+		if(localStorage.getItem("password")){
+			$scope.password = localStorage.getItem("password");
 		}
 	}]);
 

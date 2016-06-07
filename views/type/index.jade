@@ -7,14 +7,15 @@ block title
 block content
 	section(ng-controller="TypeManage")
 		h1 This is Type manage Page.
+			a(href="/") 首页
 		.type_box.mb10
 			ul(class="type_list")
 				li(ng-repeat="item in List")
 					b {{$index+1}}
 					strong {{item.name}}
 					em {{item.price}}  &nbsp;元/KG
-					span {{item.updateAt}}
-					button(ng-click="Dialog.changeFn(item)") 修改/删除
+					span {{item.updatedAt}}
+					button(ng-click="Dialog.changeFn(item , $index)" , class="m0") 修改/删除
 			p(ng-show="!List.length") 您还没有添加类型
 			button(class="type_additem" , ng-click="Dialog.addFn()") +添加
 
@@ -25,8 +26,8 @@ block content
 				input(type="text",placeholder="请输入名称" , ng-model="Dialog.data.name")
 			div(class="mb10")
 				label 价格
-				input(type="number",placeholder="请输入价格" , ng-model="Dialog.data.price")
+				input(type="text",placeholder="请输入价格" , ng-model="Dialog.data.price")
 			div(class="mb10")
 				button(class="btn" , ng-click="save()") 保存
-				button(class="fr btn" , ng-show="Dialog.state=='change'") 删除
+				button(class="fr btn" , ng-show="Dialog.state=='change'" , ng-click="deletItem(Dialog.data.id)") 删除
 	script(src="/js/type.js")

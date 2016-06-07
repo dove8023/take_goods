@@ -1,0 +1,5 @@
+# 2016.6.7
+# 忽略node_modules文件夹
+node_modules/
+# 忽略bower_components文件夹
+bower_components/

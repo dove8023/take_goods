@@ -20,7 +20,7 @@ var User = sequelize.define("User" , {
 });
 
 
-/*User.build({"name":"mast2" , "phone":15210593134 , "password" : "abc123" , "level" : "01" , "email" : "123456789@qq.com" , "city" : "深圳"}).save();*/
+
 
 
 /* Orders table */
@@ -31,7 +31,7 @@ var Order = sequelize.define("Order" , {
 	"total" : Sequelize.DECIMAL(9,2)
 });
 
-/*Order.build({"u_id":1 ,"operator" : "佐助" , "seller":"九尾32"  , "total" : 3215.46}).save();*/
+
 
 
 /* Goods table */
@@ -47,22 +47,35 @@ var Goods = sequelize.define("Goods" , {
 	"one_total" : { type : Sequelize.DECIMAL(9,2) , allowNull : false  }
 });
 
-/*Goods.build({ "u_id":1 , "o_id":1 , operator:"佐助" , "seller":"九尾" , "type_name":"一级铁" ,"type_id":1, "price":"1.2" , "weight":"200" , "one_total":"240" }).save();*/
 
 /* types table */
 var Type = sequelize.define("Type" , {
 	"u_id" : { type : Sequelize.INTEGER , allowNull : false },
 	"name" : { type : Sequelize.STRING , allowNull : false },
-	"price": { type : Sequelize.DECIMAL(9,2) , allowNull : false  }
+	"price": { type : Sequelize.DECIMAL(9,2) , allowNull : false  },
+	"state": { type : Sequelize.CHAR(1) , allowNull : false , defaultValue : 1 }
 });
 
-/*Type.build({ "u_id" : 1 , "name":"一级铁" , "price":1.2 }).save();*/
+
 
 
 
 
 // sequelize.sync({force:true});
 sequelize.sync();
+
+
+
+/*User.build({"name":"mast" , "phone":15210593133 , "password" : "abc123" , "level" : "01" , "email" : "123456789@qq.com" , "city" : "深圳"}).save();*/
+
+/*Order.build({"u_id":1 ,"operator" : "佐助" , "seller":"九尾32"  , "total" : 3215.46}).save();
+
+
+Type.build({ "u_id" : 1 , "name":"一级铁" , "price":1.2 }).save();
+
+
+Goods.build({ "u_id":1 , "o_id":1 , operator:"佐助" , "seller":"九尾" , "type_name":"一级铁" ,"type_id":1, "price":"1.2" , "weight":"200" , "one_total":"240" }).save();*/
+
 
 
 

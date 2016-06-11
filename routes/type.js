@@ -22,8 +22,8 @@ router.use(function(req , res , next){
 	/*test 去掉登陆检测
 	if(!req.session.user.id){
 		req.session.user.id = 1;
-	}*/
-	next();
+	}
+	next();*/
 	
 });
 

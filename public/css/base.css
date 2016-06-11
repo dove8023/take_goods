@@ -1,109 +1,96 @@
-/* reset */
-
-body{
-    font-family:   "Microsoft yahei", "Helvetica Neue",
-    "\u5fae\u8f6f\u96c5\u9ed1", sans-serif;
-    font-size: 100%;
-    /*font-family: "楷体";*/
-    /*font-family: "楷体","楷体_GB2312","黑体","Microsoft yahei"; */
-}
-html, body, div, h1, h2, h3, h4, h5, h6, blockquote, p, pre, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, thead, tr, th, td, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, iframe{
-    margin: 0;
-    padding: 0;
-} 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section,iframe{
-    display: block;
-}
-b, em, i, strong {
-    font-weight: normal;
-    font-style: normal;
-}
-ul, ol, li{
+ul,ol{
     list-style: none;
-}
-h1, h2, h3, h4, h5, h6{
-    font-size: 100%;
-    font-weight: normal;
-}
-table{
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-address, cite, dfn, var, em, i{
-    font-style: normal;
-}
-img{
-    border: none;
-}
-input, img{
-    vertical-align: middle;
-}
-select, input, button, textarea{
-    font: 100% tahoma, verdana, arial;
-}
-small{
-    font-size: 12px;
-}
-button{
-    cursor: pointer;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-input{
-    background-attachment: fixed;
     padding: 0;
 }
 
-textarea{
-    resize: none;
-}
-/* 下标和上标 */
-sup{
-    vertical-align: text-top;
-}
-sub{
-    vertical-align: text-bottom;
-}
-a{
-    text-decoration: none;
-    cursor: pointer;
-    font-family: "楷体","楷体_GB2312","黑体","Microsoft yahei"; 
-}
-input[type="reset"],
-input[type="submit"],
-input[type="button"]{
-    cursor: pointer;
-}
-input[type="radio"]{
-    margin: 0 3px 0 0;
-}
-::-webkit-input-placeholder{
-    color: #999;
-    font-family: "\5FAE\8F6F\96C5\9ED1";
-}
-::-moz-placeholder{
-    color: #999;
-    opacity: 1;
-    font-family: "\5FAE\8F6F\96C5\9ED1";
-}
-::-moz-placeholder{
-    color: #999;
-    opacity: 1;
-    font-family: "\5FAE\8F6F\96C5\9ED1";
-}
-::-ms-input-placeholder{
-    color: #999;
-    font-family: "\5FAE\8F6F\96C5\9ED1";
-}
-/* reset end */
 
 /* quick style */
 .clearfix:before,
 .clearfix:after{
     display: table;
     content: '';
+}
+.ac_time{
+    background: red;
+}
+
+
+
+.font0{
+    font-size: 0.8em;
+}
+.font1{
+    font-size: 1.2em;
+}
+.font2{
+    font-size: 1.4em;
+}
+.font3{
+    font-size: 1.6em;
+}
+.font4{
+    font-size: 1.8em;
+}
+.font5{
+    font-size: 2em;
+}
+.blank_h15{
+    height: 15px;
+    margin: 0 !important;
+}
+.w60{
+    max-width: 60px;
+    width: 60px;
+}
+.w100{
+    max-width: 100px;
+    width: 100px;
+}
+.w100i{
+    max-width: 100px;
+    width: 100px !important;
+}
+.w150{
+    max-width: 150px;
+    width: 150px;
+}
+.w150i{
+    max-width: 150px;
+    width: 150px !important;
+}
+.w160{
+    max-width:160px;
+    width: 160px;
+}
+.w160i{
+    max-width:160px;
+    width: 160px !important;
+}
+.w200{
+    max-width: 200px;
+    width: 200px;
+}
+.w250{
+    max-width: 250px;
+    width: 250px;
+}
+.w300{
+    max-width: 300px;
+    width: 300px;
+}
+.w300i{
+    max-width: 300px !important;
+    width: 300px !important;
+}
+.w500{
+    max-width: 500px !important;
+    width: 500px !important;
+}
+.inline-block{
+    display: inline-block !important;
+}
+.inline-block2{
+    display: inline-block;
 }
 .clearfix:after{
     clear: both;
@@ -175,15 +162,6 @@ input[type="radio"]{
 .pb30{
     padding-bottom: 30px;
 }
-.pb60{
-    padding-bottom: 60px;
-}
-.pb80{
-    padding-bottom: 80px;
-}
-.pb100{
-    padding-bottom: 100px;
-}
 .pl5{
     padding-left: 5px;
 }
@@ -217,6 +195,9 @@ input[type="radio"]{
 .mt5{
     margin-top: 5px;
 }
+.mt10f{
+    margin-top: -10px;
+}
 .mt10{
     margin-top: 10px;
 }
@@ -244,12 +225,6 @@ input[type="radio"]{
 .mb30{
     margin-bottom: 30px;
 }
-.mb45{
-    margin-bottom: 45px;
-}
-.mb60{
-    margin-bottom: 60px;
-}
 .ml5{
     margin-left: 5px;
 }
@@ -264,6 +239,9 @@ input[type="radio"]{
 }
 .ml30{
     margin-left: 30px;
+}
+.ml40{
+    margin-left: 40px;
 }
 .mr5{
     margin-right: 5px;
@@ -288,6 +266,9 @@ input[type="radio"]{
     margin: 0 auto;
     text-align: center;
 }
+.display-none{
+    display: none;
+}
 .arial{
     font-family: Arial;
 }
@@ -306,13 +287,3 @@ input[type="radio"]{
 .yahei{
     font-family: "\5FAE\8F6F\96C5\9ED1";
 }
-.position_r{
-    position: relative;
-}
-.position_a{
-    position: absolute;
-}
-.display_b{
-    display: block;
-}
-

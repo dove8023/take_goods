@@ -36,7 +36,8 @@ app.use(session({
 //路劲设置
 var indexRoute = require("./routes/index"),
 	userRoute  = require("./routes/user"),
-	typeRoute  = require("./routes/type");
+	typeRoute  = require("./routes/type"),
+	receiveRoute=require("./routes/receive");
 
 app.use(function(req , res , next){
 	var user = req.session.user;
@@ -65,10 +66,11 @@ app.use("/user" , userRoute);
 
 
 //收获界面
-
+// Receiving
+app.use("/receive" , receiveRoute);
 
 //交易查看
-
+// order
 
 //类型管理
 app.use("/type" , typeRoute);

@@ -1,0 +1,48 @@
+extends ./layout.jade
+
+block title
+	title 收货界面
+	link(rel="stylesheet", href="/css/receive.css")
+block content
+	section(ng-controller="")
+		h1.tc.font 收货界面
+			a(href="/") 去首页
+		form.receive-box
+			.receive-header.form-group.tc
+				label
+					|卖货人: 
+					input(type="text" , placeholder="请输入人名")
+				span 时间：2016-06-08 08:12:00
+
+			//货品列表
+			ul.receive-list.form-group.form-inline
+				li
+					b 1
+					select.form-control
+						option(value="铁") 铁
+						option(value="塑料") 塑料
+						option(value="生胶") 生胶
+					label
+						|净重
+						input(type="text").form-control
+						|kg
+					label
+						|价格
+						input(type="text")
+						|元/kg
+					span
+						|小记
+						strong 88.45
+						|元
+
+
+
+
+
+
+
+
+
+
+
+

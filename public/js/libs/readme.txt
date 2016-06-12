@@ -1,0 +1,1 @@
+.bowerrc讲制定bower下载包到当前文件夹bower_components中

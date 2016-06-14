@@ -4,5 +4,5 @@ node_modules/
 # 忽略bower_components文件夹
 bower_components/
 
-＃数据库文件
-config.json
+# 数据库文件
+./config.json

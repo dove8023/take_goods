@@ -2,7 +2,7 @@
 	"host":"localhost",
 	"database":"take_goods",
 	"user":"root",
-	"password":"",
+	"password":"hexisen123",
 	"port":3306,
 	"timezone":"+08:00"
 }

@@ -34,10 +34,8 @@ app.use(session({
 
 
 //路劲设置
-var indexRoute = require("./routes/index"),
-	userRoute  = require("./routes/user"),
-	typeRoute  = require("./routes/type"),
-	receiveRoute=require("./routes/receive");
+var viewRoute = require("./routes/view"),
+	apiRoute  = require("./routes/api");
 
 app.use(function(req , res , next){
 	var user = req.session.user;
@@ -53,30 +51,29 @@ app.use(function(req , res , next){
 });
 
 
-//首页部分
-app.use("/" , indexRoute);
-app.use("/index" , indexRoute);
+/* view 部分 */
+app.use("/" , viewRoute);
+
+/* api */
+app.use("/api" , apiRoute);
 
 
+// /* 用户相关 */
+// app.use("/user" , userRoute);
 
 
+// //收获界面
+// // Receiving
+// app.use("/receive" , receiveRoute);
 
-/* 用户相关 */
-app.use("/user" , userRoute);
+// //交易查看
+// // order
 
-
-//收获界面
-// Receiving
-app.use("/receive" , receiveRoute);
-
-//交易查看
-// order
-
-//类型管理
-app.use("/type" , typeRoute);
+// //类型管理
+// app.use("/type" , typeRoute);
 
 
-//数据统计
+// //数据统计
 
 
 

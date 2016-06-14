@@ -28,7 +28,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 				return false;
 			}
 
-			$http.post("/user/api/login" , {
+			$http.post("/api/login" , {
 				"phone" : $scope.phoneNumber ,
 				"password" : $scope.password
 			}).success(function(result){
@@ -42,6 +42,8 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 				console.log(result);
 			})
 		}
+
+		/* 自动补全表单 */
 
 		if(localStorage.getItem("phone")){
 			$scope.phoneNumber = localStorage.getItem("phone");

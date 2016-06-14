@@ -28,7 +28,8 @@ var Order = sequelize.define("Order" , {
 	"u_id" : { type : Sequelize.INTEGER , allowNull : false },
 	"operator" : Sequelize.STRING,
 	"seller" : Sequelize.STRING,
-	"total" : Sequelize.DECIMAL(9,2)
+	"total" : Sequelize.DECIMAL(9,2),
+	"comment": Sequelize.TEXT("medium")
 });
 
 

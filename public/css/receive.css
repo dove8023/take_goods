@@ -3,3 +3,74 @@
  * time    @ 2016.6.8
  * author  @ Mr.He
 */
+
+.receive-list{
+	width: 800px;
+	margin: 0 auto;
+}
+.receive-list li{
+	overflow: hidden;
+	border-bottom: #ccc 1px solid;
+	padding: 5px 10px 0;
+	margin-bottom: 10px;
+}
+.receive-list b,
+.receive-list select,
+.receive-list label,
+.receive-list span{
+	float: left;
+}
+.receive-list b{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color: #fff;
+    background: #090;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+.receive-list select{
+	width: 100px!important;
+	margin-right: 15px;
+}
+.receive-list label.weight input{
+	width: 130px;
+}
+.receive-list label.price input{
+	width: 130px;
+}
+.receive-list span{
+	font-size: 14px;
+	line-height: 35px;
+}
+.receive-list span strong{
+	display: inline-block;
+	width: 70px;
+	text-align: right;
+}
+.receive-list .btn-danger{
+	background: #c9302c;
+	padding: 3px 10px;
+	margin-top: 3px;
+}
+.r_opertor{
+	width: 800px;
+	margin: 0 auto;
+	padding:10px;
+}
+.r_opertor .btn-block{
+	width: 200px;
+	margin: 20px auto;
+}
+.r_opertor .btn-default{
+	font-weight: bold;
+}
+.r_opertor label{
+	display: block;
+	margin: 15px 0;
+}
+.r_opertor label textarea{
+	resize: none;
+}

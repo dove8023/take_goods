@@ -46,7 +46,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 		};
 		
 		/* 暂时不考虑分页的情况 */
-		$http.get("/type/api/list").success(function(result){
+		$http.get("/api/type/list").success(function(result){
 			console.log(result);
 			$scope.List = result.data.rows;
 		});
@@ -59,7 +59,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 
 			if($scope.Dialog.state == "add"){
 				//add new one.
-				$http.post("/type/api/add" , {
+				$http.post("/api/type/add" , {
 					"name" : $scope.Dialog.data.name,
 					"price": $scope.Dialog.data.price,
 				}).success(function(result){
@@ -73,7 +73,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 				});
 			}else{
 				//update 
-				$http.post("/type/api/update" , {
+				$http.post("/api/type/update" , {
 					"name" : $scope.Dialog.data.name,
 					"price": $scope.Dialog.data.price,
 					"id"   : $scope.Dialog.data.id
@@ -95,12 +95,12 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 			if(!confirm("确定删除这个类型？")){
 				return;
 			}
-			$http.post("/type/api/delete" , {
+			$http.post("/api/type/delete" , {
 				"id" : id
 			}).success(function(result){
 				console.log(result);
 				if(result.state == 1){
-					$scope.List.splice($scope.Dialog.index , 1);
+					$scope.List.splice($scope.Dialog.data.index , 1);
 					alert("删除成功");
 				}else{
 					alert(result.msg);

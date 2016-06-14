@@ -4,37 +4,96 @@ block title
 	title 收货界面
 	link(rel="stylesheet", href="/css/receive.css")
 block content
-	section(ng-controller="")
-		h1.tc.font 收货界面
-			a(href="/") 去首页
+	section(ng-controller="Orders")
+		h1.tc.font 
+			a(href="/" , class="fl font0") 去首页
+			|收货界面
 		form.receive-box
-			.receive-header.form-group.tc
+			.receive-header.form-group.tc.form-inline
 				label
 					|卖货人: 
-					input(type="text" , placeholder="请输入人名")
-				span 时间：2016-06-08 08:12:00
+					input(type="text" , placeholder="请输入人名" , ng-model="Data.seller").form-control.mr10
+				span 时间：{{Data.createdAt | toTime}}
 
 			//货品列表
-			ul.receive-list.form-group.form-inline
-				li
-					b 1
-					select.form-control
-						option(value="铁") 铁
-						option(value="塑料") 塑料
-						option(value="生胶") 生胶
-					label
-						|净重
-						input(type="text").form-control
-						|kg
-					label
-						|价格
-						input(type="text")
-						|元/kg
-					span
-						|小记
-						strong 88.45
-						|元
 
+			ul.receive-list.form-group.form-inline
+				li(ng-repeat="item in List")
+					b.mr20 {{$index+1}}
+					select.form-control(ng-model="TypeChoice" , ng-options="optionItem.name for optionItem in TypeList" , ng-change="typechange(TypeChoice , {{$index}})")
+						option(value="") 请选择类型
+					label.price.mr30
+						|价格
+						input(type="number" , ng-model="item.price").form-control
+						|元/kg
+					label.weight.mr20
+						|净重
+						input(type="number" , ng-model="item.weight").form-control
+						|kg
+					span
+						|小计：
+						strong {{ item.weight * item.price | Money}}
+						|元
+					button.btn.btn-danger.fr(ng-click="deletItem($index)")
+						|删除
+				p(ng-show="!List.length") 没有记录
+				//- li
+				//- 	b.mr20 1
+				//- 	select.form-control
+				//- 		option(value="铁") 铁
+				//- 		option(value="塑料") 塑料
+				//- 		option(value="生胶") 生胶
+				//- 	label.weight.mr20
+				//- 		|净重
+				//- 		input(type="text").form-control
+				//- 		|kg
+				//- 	label.price.mr30
+				//- 		|价格
+				//- 		input(type="text").form-control
+				//- 		|元/kg
+				//- 	span
+				//- 		|小计：
+				//- 		strong 88.45
+				//- 		|元
+				//- 	button.btn.btn-danger.fr
+				//- 		|删除
+
+			//添加一项  和  保存
+			.r_opertor
+				button.btn.btn-success(ng-click="addItem()")
+					|+添加一项
+				buttton.btn.btn-default.fr.disabled
+					|合计：
+					span {{Data.total}}
+					|元
+				label
+					|其它说明：
+					textarea.form-control(placeholder="写一些额外补充" , ng-model="Data.comment")
+				button.btn.btn-info.btn-block(ng-click="Save()")
+					|保存
+
+
+
+
+	//- script(src="/js/libs/bower_components/jquery/dist/jquery.js")
+
+	script(src="/js/receive.js")
+	//- script.
+
+	//- 	jQuery.ajax({
+	//- 	    url:"",
+	//- 	    dataType:"jsonp",
+	//- 	    type:"get",
+	//- 	    success: function(data){
+	//- 	        //...调用成功代码
+	//- 	        alert(111);
+	//- 	    },
+	//- 	    error: function(XMLHttpRequest, textStatus, errorThrown){
+	//- 	        //- alert(XMLHttpRequest.status); //查看请求状态
+	//- 	        console.log(XMLHttpRequest.status)
+	//- 	        //调用失败代码
+	//- 	    }
+	//- 	});
 
 
 

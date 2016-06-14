@@ -14,16 +14,16 @@ var router = express.Router();
 /* all request of /type will be here. */
 router.use(function(req , res , next){
 	console.log("type router...");
-	if(!req.session.user.session_id){
+	/*if(!req.session.user.session_id){
 		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
 	}else{
 		next();
-	}
-	/*test 去掉登陆检测
+	}*/
+	// test 去掉登陆检测
 	if(!req.session.user.id){
 		req.session.user.id = 1;
 	}
-	next();*/
+	next();
 	
 });
 
@@ -97,7 +97,10 @@ router.post("/api/add" , function(req , res , next){
 });
 
 
-/* delete one. */
+/* 
+  delete one.
+  set the note's state to 0.
+ */
 router.post("/api/delete" , function(req , res , next){
 	if(!req.body.id){
 		res.json({

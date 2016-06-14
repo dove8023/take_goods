@@ -3,7 +3,8 @@ extends ../layout.jade
 block title
 	title 类型管理页面
 	link(href="/css/type.css" , rel="stylesheet")
-
+	style.
+		button{border:none;outline:none;}
 block content
 	section(ng-controller="TypeManage")
 		h1 This is Type manage Page.
@@ -28,6 +29,6 @@ block content
 				label 价格
 				input(type="text",placeholder="请输入价格" , ng-model="Dialog.data.price")
 			div(class="mb10")
-				button(class="btn" , ng-click="save()") 保存
-				button(class="fr btn" , ng-show="Dialog.state=='change'" , ng-click="deletItem(Dialog.data.id)") 删除
+				button(class="btnm" , ng-click="save()") 保存
+				button(class="fr btnm" , ng-show="Dialog.state=='change'" , ng-click="deletItem(Dialog.data.id)") 删除
 	script(src="/js/type.js")

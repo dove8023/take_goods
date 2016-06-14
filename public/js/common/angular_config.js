@@ -7,17 +7,20 @@
 define(["angular"] , function(angular){
 	var app = angular.module("angular_config" , []);
 
-	app.config(function($httpProvider){
+
+	app.config(function($httpProvider , $locationProvider){
 		$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 
 		// Override $http service's default transformRequest
 	    $httpProvider.defaults.transformRequest = [function(data) {
+
 	        /**
 	         * The workhorse; converts an object to x-www-form-urlencoded serialization.
 	         * @param {Object} obj
 	         * @return {String}
 	         */
 	        var param = function(obj) {
+	        	
 	            var query = '';
 	            var name, value, fullSubName, subName, subValue, innerObj, i;
 
@@ -27,7 +30,7 @@ define(["angular"] , function(angular){
 	                if (value instanceof Array) {
 	                    for (i = 0; i < value.length; ++i) {
 	                        subValue = value[i];
-	                        fullSubName = name + '[' + i + ']';
+	                        fullSubName = name;
 	                        innerObj = {};
 	                        innerObj[fullSubName] = subValue;
 	                        query += param(innerObj) + '&';
@@ -53,5 +56,14 @@ define(["angular"] , function(angular){
 	                ? param(data)
 	                : data;
 	    }];
+
+
+
+
+
+	    $locationProvider.html5Mode(true);
+
+
+
 	});
 });

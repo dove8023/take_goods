@@ -97,8 +97,10 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 					sum += one.weight*one.price;
 					//保存单条数据的总价
 					one.one_total = one.weight*one.price;
+
 				}
 			}
+			sum = parseInt(sum*100) / 100;
 			$scope.Data.total = sum;
 		}
 

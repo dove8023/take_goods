@@ -1,6 +1,6 @@
 /*
- * content @ Receiving Page function.
- * time    @ 2016.6.12
+ * content @ deal check Page function.
+ * time    @ 2016.6.16
  * author  @ Mr.He
 */
 
@@ -25,7 +25,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			location.href = "/";
 		}
 		
-		
+		return;
 
 		/* ==== 页面数据模型准备 ==== */
 		$scope.Data = {"total":0.0};  //页面整体数据

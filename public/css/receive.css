@@ -31,8 +31,13 @@
     border-radius: 50%;
     margin-top: 5px;
 }
+.receive-list button.disabled{
+	margin-right: 15px;
+	width: 120px;
+	overflow: hidden;
+}
 .receive-list select{
-	width: 100px!important;
+	width: 120px!important;
 	margin-right: 15px;
 }
 .receive-list label.weight input{

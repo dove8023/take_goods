@@ -29,7 +29,8 @@ var Order = sequelize.define("Order" , {
 	"operator" : Sequelize.STRING,
 	"seller" : Sequelize.STRING,
 	"total" : Sequelize.DECIMAL(9,2),
-	"comment": Sequelize.TEXT("medium")
+	"comment": Sequelize.TEXT("medium"),
+	"state" : { type : Sequelize.CHAR(1) , allowNull : false , defaultValue : 1 }
 });
 
 
@@ -45,7 +46,8 @@ var Goods = sequelize.define("Goods" , {
 	"type_id" : { type : Sequelize.INTEGER , allowNull : false },
 	"price" : { type : Sequelize.DECIMAL(9,2) , allowNull : false  },
 	"weight" : { type : Sequelize.DECIMAL(8,3) , allowNull : false  },
-	"one_total" : { type : Sequelize.DECIMAL(9,2) , allowNull : false  }
+	"one_total" : { type : Sequelize.DECIMAL(9,2) , allowNull : false  },
+	"state" : { type : Sequelize.CHAR(1) , allowNull : false , defaultValue : 1 }
 });
 
 

@@ -6,7 +6,7 @@ block title
 block content
 	section(ng-controller="Orders")
 		h1.tc.font 
-			a(href="/" , class="fl font0") 去首页
+			a(ng-click="goHomePage()" , class="fl font0") 去首页
 			|收货界面
 		form.receive-box
 			.receive-header.form-group.tc.form-inline
@@ -20,21 +20,22 @@ block content
 			ul.receive-list.form-group.form-inline
 				li(ng-repeat="item in List")
 					b.mr20 {{$index+1}}
-					select.form-control(ng-model="TypeChoice" , ng-options="optionItem.name for optionItem in TypeList" , ng-change="typechange(TypeChoice , {{$index}})")
+					select.form-control(ng-model="AA" , ng-options="AA.name for AA in TypeList" , ng-change="typechange(AA , {{$index}})" , ng-if="item.newone")
 						option(value="") 请选择类型
+					button.fl.btn.btn-default.disabled(ng-if="!item.newone") {{item.type_name}}
 					label.price.mr30
 						|价格
-						input(type="number" , ng-model="item.price").form-control
+						input(type="text" , ng-model="item.price").form-control
 						|元/kg
 					label.weight.mr20
 						|净重
-						input(type="number" , ng-model="item.weight").form-control
+						input(type="text" , ng-model="item.weight").form-control
 						|kg
 					span
 						|小计：
 						strong {{ item.weight * item.price | Money}}
 						|元
-					button.btn.btn-danger.fr(ng-click="deletItem($index)")
+					button.btn.btn-danger.fr(ng-click="deletItem($index , item)")
 						|删除
 				p(ng-show="!List.length") 没有记录
 				//- li
@@ -73,12 +74,10 @@ block content
 					|保存
 
 
-
-
 	//- script(src="/js/libs/bower_components/jquery/dist/jquery.js")
-
 	script(src="/js/receive.js")
 	//- script.
+	//- 	$("#abc").val("abcdefg");
 
 	//- 	jQuery.ajax({
 	//- 	    url:"",

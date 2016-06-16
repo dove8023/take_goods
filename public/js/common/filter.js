@@ -48,6 +48,9 @@ define(['angular'] , function(angular){
 	/* 时间戳转换为标准时间 */
 	app.filter("toTime" , function(){
 		var toTimeFn = function(input){
+			if(input == undefined){
+				input = +new Date();
+			}
 			return input && input.toString().datechange();
 		};
 		return toTimeFn;

@@ -168,55 +168,156 @@ router.post("/receive/addorder" , function(req , res , next){
 		res.json({"state": 0 , "msg":"参数不对"});
 		return;
 	}
+	if(!req.body.rows.length){
+		res.json({"state": 0 , "msg":"没有货物"});
+		return;
+	}
 
-	db.Order.add({
-		"total" : req.body.total,
-		"seller": req.body.seller,
-		"operator": req.session.user.name,
-		"comment" : req.body.comment,
-		"u_id"  : req.session.user.id
-	} , function(result){
-		if(!result.id){
-			res.json({
-				"state" : 0,
-				"msg"   : "订单添加失败",
-			});
-			return;
-		}
-		var order_id = result.id;
-		//订单添加成功，保存货物数据
-		if(!req.body.rows.length){
+	if(req.body.id){
+		//update
+		db.Order.update({
+			"total" : req.body.total,
+			"seller": req.body.seller,
+			"comment" : req.body.comment,
+			"id"    : req.body.id
+		} , function(result){
+			if(!result[0]){
+				res.json({
+					"state" : 0,
+					"msg"   : "订单修改失败",
+				});
+				return;
+			}
+			var order_id = req.body.id;
+
+			for(var i=0,len=req.body.rows.length;i<len;i++){
+				var data = req.body.rows[i];
+				data.u_id = req.session.user.id;
+				data.o_id = order_id;
+				data.operator = req.session.user.name;
+				data.seller = req.body.seller;
+				db.Goods.upsert(data);
+			}
+			
 			res.json({
 				"state" : 1,
-				"msg"   : "add success but not goods",
-				"data"	: result
+				"msg"   : "修改成功",
+				"data"  : {
+					"order_id" : order_id,
+				}
 			});
-			return;
-		}
-
-		//整理货物数据
-		for(var i=0,len=req.body.rows.length;i<len;i++){
-			//以后添加数据格式检查
-			var data = req.body.rows[i];
-			data.u_id = req.session.user.id;
-			data.o_id = result.id;
-			data.operator = req.session.user.name;
-			data.seller = req.body.seller;
-		}
-		db.Goods.add(req.body.rows , function(result){
+		});
+	}else{
+		//add new one.
+		db.Order.add({
+			"total" : req.body.total,
+			"seller": req.body.seller,
+			"operator": req.session.user.name,
+			"comment" : req.body.comment,
+			"u_id"  : req.session.user.id
+		} , function(result){
+			if(!result.id){
+				res.json({
+					"state" : 0,
+					"msg"   : "订单添加失败",
+				});
+				return;
+			}
+			var order_id = result.id;
+			//订单添加成功，保存货物数据
+			insertGoods(req , res , req.body.rows , order_id);
 			res.json({
 				"state" : 1,
 				"msg"   : "add success",
 				"data"  : {
 					"order_id" : order_id,
-					"goods_data": result
 				}
 			});
 		});
-	});
-
+	}
 });
 
+function insertGoods (req , res , arr , order_id){
+	//整理货物数据
+	for(var i=0,len=req.body.rows.length;i<len;i++){
+		//以后添加数据格式检查
+		var data = req.body.rows[i];
+		data.u_id = req.session.user.id;
+		data.o_id = order_id;
+		data.operator = req.session.user.name;
+		data.seller = req.body.seller;
+	}
+
+	//保存货物数据
+	db.Goods.add(arr);
+}
+
+/* 查询订单 */
+router.get("/receive/select/:id" , function(req , res , next){
+	var ID = req.params.id;
+	if(ID && ID.toString().replace(/\D/g,"")){
+		ID = ID.toString().replace(/\D/g,"");
+	}else{
+		res.json({
+			"state" : 0,
+			"msg"   : "参数不对",
+		});
+		return;
+	}
+
+	/* 多个异步事件的统一处理 */
+	db.Order.select({
+		"id" : ID,
+		"u_id": req.session.user.id
+	} , function(result){
+		if(!result){
+			res.json({
+				"state" : 0,
+				"msg"   : "没有这条记录",
+				"data"  : result
+			});
+			return;
+		}
+		db.Goods.select({
+			"o_id" : ID,
+			"limit": 1000
+		} , function(result2){
+			res.json({
+				"state" : 1,
+				"msg"   : "单条记录查询成功",
+				"data"  : result,
+				"goodsData" : result2
+			});
+		});
+	});
+});
+
+/* ========= goods表相关请求 ========= */
+router.post("/goods/delete/:id" , function(req , res , next){
+	if(!req.params.id){
+		res.json({
+			"state" : 0,
+			"msg"   : "删除失败，没有ID"
+		});
+		next();
+	}
+	db.Goods.delete({
+		"id" : req.params.id
+	} , function(result){
+		if(result[0] == 1){
+			res.json({
+				"state" : 1,
+				"msg"   : "删除成功"
+			});
+		}else{
+			res.json({
+				"state" : 0,
+				"msg"   : "没有找到这条记录"
+			});
+		}
+		
+	});
+});
 
 
 

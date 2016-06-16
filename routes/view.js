@@ -40,8 +40,10 @@ router.get("/receive" , function(req , res , next){
 	res.render("receiving");
 });
 
-
-
+/* order check page. */
+router.get("/order" , function(req , res , next){
+	res.render("order");
+});
 
 
 

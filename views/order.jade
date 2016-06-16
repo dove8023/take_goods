@@ -1,0 +1,85 @@
+extends ./layout.jade
+
+block title
+	title 交易查询
+	link(rel="stylesheet", href="/css/order.css")
+block content
+	section(ng-controller="Orders")
+		h1.tc.font 
+			a(ng-click="goHomePage()" , class="fl font0") 去首页
+			|交易查询
+		
+		div.order-box
+			div.order-header
+				button.btn.btn-default.btn-success 今日交易
+				button.btn.btn-default 本周交易
+				button.btn.btn-default 本月
+				button.btn.btn-default 其它时间段
+				p 查询时间段：
+					span.dealtime 2016-06-01~2016-06-16
+			.order-list.tc.mb20.order-title
+				span 序号
+				span 交易时间
+				span 卖货人
+				span 金额
+				span 操作员
+				span 备注
+			ul.order-list
+				li
+					span.num 20
+					span
+					span
+					span
+					span
+					span
+
+	//- button#testBtn.btn.btn-default 按钮
+	//- div#test(style={"display":"none"}) testetsetse
+	script(src="/js/order.js")
+
+	//- script(src="/js/libs/bower_components/jquery/dist/jquery.js")
+
+	//- script.
+	//- 	var Btn = $("#testBtn");
+	//- 	var Element = $("#test");
+		
+	//- 	Btn.on("click" , function(){
+	//- 		//- Element.fadeIn(1000);
+	//- 		//- Element.queue(function(){
+	//- 		//- 	console.log(11);
+	//- 		//- 	$(this).text("hello");
+	//- 		//- 	$(this).dequeue();
+	//- 		//- }).delay(3000);
+	//- 		//- //- Element.queue(function(){
+	//- 		//- 	Element.fadeOut(1000);
+	//- 		//- });
+
+	//- 		//- Element.fadeIn(1000).delay(3000).fadeOut(1000);
+
+	//- 		//- console.log("helel")
+
+	//- 		Element.show().queue(function(){
+	//- 			console.log("queue");
+	//- 			$(this).show().dequeue();
+	//- 		}).delay(5000).queue(function(){
+	//- 			console.log("last")
+	//- 			$(this).hide();
+	//- 		})
+	//- 	});
+
+	//- 	//- Element.fadeIn(2000);
+		
+	//- 	var timer;
+	//- 	$("#reload").css("display" , "block");
+	//- 	timer = setTimeout(function(){
+	//- 		$("#reload").css("display" , "none");
+	//- 	} , 15000);
+
+
+
+
+
+
+
+
+

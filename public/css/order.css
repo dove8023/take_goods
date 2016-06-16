@@ -1,0 +1,67 @@
+/*
+ * content @ order page style.
+ * time    @ 2016.6.16
+ * author  @ Mr.He
+*/
+
+.order-box{
+	width: 800px;
+	margin: 0 auto;
+}
+.order-header{
+	overflow: hidden;
+	padding-top: 30px;
+}
+.order-header button{
+	margin-right: 15px;
+}
+.order-header p{
+	margin: 10px 0;
+	font-size: 16px;
+}
+.dealtime{
+	font-size: 14px;
+	color: #ccc;
+}
+.order-title{
+	border-bottom: 1px solid #ccc;
+}
+.order-list{
+	line-height: 30px;
+	overflow: hidden;
+}
+.order-list span{
+	float: left;
+	margin-right: 15px;
+	font-weight: bold;
+	overflow: hidden;
+}
+.order-list .num{
+	border-radius: 50%;
+	background: #090;
+	color: #fff;
+	font-weight: bold;
+	width: 30px!important;
+}
+.order-list li{
+	padding-left: 10px;
+}
+.order-list span:nth-child(1){
+	width: 50px;
+	text-align: center;
+}
+.order-list span:nth-child(2){
+	width: 100px;
+}
+.order-list span:nth-child(3){
+	width: 100px;
+}
+.order-list span:nth-child(4){
+	width: 100px;
+}
+.order-list span:nth-child(5){
+	width: 100px;
+}
+.order-list span:nth-child(6){
+	width: 150px;
+}

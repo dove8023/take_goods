@@ -5,4 +5,4 @@ node_modules/
 bower_components/
 
 # 数据库文件
-./config.json
+/config.json

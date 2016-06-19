@@ -82,6 +82,7 @@
 	cursor: pointer;
 	padding: 3px;
 	font-size: 16px;
+    box-sizing: content-box;
 }
 .changeBox label{
 	margin-right: 10px;

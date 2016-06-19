@@ -35,14 +35,16 @@ define(['angular'] , function(angular){
 			}
 		}
 		var d = new Date(str/1);
-		var hour , min , sec;
+		var hour , min , sec , month;
 		hour = d.getHours();
 		min  = d.getMinutes();
 		sec  = d.getSeconds();
+		month= d.getMonth() + 1;
 		if(hour < 10) hour = '0' + hour;
 		if(min < 10) min = '0' + min;
 		if(sec < 10) sec = '0' + sec;
-		return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+hour+":"+min+":"+sec;
+		if(month<10) month = '0' + month;
+		return d.getFullYear()+"-"+month+"-"+d.getDate()+" "+hour+":"+min+":"+sec;
 	}
 
 	/* 时间戳转换为标准时间 */
@@ -56,6 +58,16 @@ define(['angular'] , function(angular){
 		return toTimeFn;
 	});
 
+	app.filter("Dnull" , function(){
+		var fn = function(input){
+			if(!input || input == ""){
+				return "暂无";
+			}else{
+				return input;
+			}
+		}
+		return fn;
+	});
 
 	/* 转换M , F为男女 */
 	app.filter("sex" , function(){

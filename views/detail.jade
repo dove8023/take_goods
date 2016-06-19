@@ -1,0 +1,21 @@
+extends ./layout.jade
+
+block title
+	title 交易详情查询
+	link(rel="stylesheet", href="/css/order.css")
+block content
+	section(ng-controller="Orders")
+		h1.tc.font 
+			a(ng-click="goHomePage()" , class="fl font0") 去首页
+			|交易详情 #{id}
+		
+
+	script(src="/js/detail.js")
+
+
+
+
+
+
+
+

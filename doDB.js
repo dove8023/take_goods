@@ -32,7 +32,7 @@ Type.prototype.findAll = function(options , callback){
 		options.page = 1; //默认第一页
 	}
 	if(!options.limit){
-		options.limit = 1000; //默认每页1000条
+		options.limit = 20; //默认每页20条
 	}
 	db.Type.findAndCountAll({
 		"where" : {
@@ -125,7 +125,7 @@ Order.prototype.select = function(options , callback){
 			options.page = 1; //默认第一页
 		}
 		if(!options.limit){
-			options.limit = 1000; //默认每页1000条
+			options.limit = 20; //默认每页20条
 		}
 		db.Order.findAndCountAll({
 			"where" : {
@@ -141,6 +141,33 @@ Order.prototype.select = function(options , callback){
 			return callback && callback(result);
 		});
 	}
+}
+
+/* 依据订单的创建时间查询 */
+Order.prototype.selectByTime = function(options , callback){
+	if(!options.page){
+		options.page = 1; //默认第一页
+	}
+	if(!options.limit){
+		options.limit = 20; //默认每页20条
+	}
+	db.Order.findAndCountAll({
+		"where" : {
+			"u_id" : options.u_id,
+			"state": 1,
+			"createdAt" : {
+				"$gt" : options.begin,
+				"$lt" : options.end
+			}
+		},
+		"offset" : (options.page - 1)*options.limit,
+		"limit"  : options.limit,
+		"order" : [
+			["id" , "DESC"]
+		]
+	}).then(function(result){
+		return callback && callback(result);
+	});
 }
 
 var OrderObj = new Order();
@@ -192,7 +219,7 @@ Goods.prototype.select = function(options , callback){
 			options.page = 1; //默认第一页
 		}
 		if(!options.limit){
-			options.limit = 1000; //默认每页1000条
+			options.limit = 20; //默认每页20条
 		}
 		db.Goods.findAndCountAll({
 			"where" : {

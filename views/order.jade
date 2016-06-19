@@ -9,14 +9,14 @@ block content
 			a(ng-click="goHomePage()" , class="fl font0") 去首页
 			|交易查询
 		
-		div.order-box
-			div.order-header
-				button.btn.btn-default.btn-success 今日交易
-				button.btn.btn-default 本周交易
-				button.btn.btn-default 本月
-				button.btn.btn-default 其它时间段
+		.order-box
+			.order-header(ng-tab , tab-class="btn-success")
+				button.btn.btn-default.btn-success(ng-click="timechoice('today')") 今日交易
+				button.btn.btn-default(ng-click="timechoice('week')") 本周交易
+				button.btn.btn-default(ng-click="timechoice('month')") 本月
+				button.btn.btn-default(ng-click="timechoice('other')") 其它时间段
 				p 查询时间段：
-					span.dealtime 2016-06-01~2016-06-16
+					span.dealtime {{showchecktime}}
 			.order-list.tc.mb20.order-title
 				span 序号
 				span 交易时间
@@ -25,56 +25,27 @@ block content
 				span 操作员
 				span 备注
 			ul.order-list
-				li
-					span.num 20
-					span
-					span
-					span
-					span
-					span
+				li(ng-repeat="item in DataList" , ng-click="showDetail(item)")
+					span.num {{$index+1}}
+					span.time {{item.createdAt | toTime}}
+					span {{item.seller}}
+					span {{item.total}}
+					span {{item.operator}}
+					span {{item.comment | Dnull}}
 
-	//- button#testBtn.btn.btn-default 按钮
-	//- div#test(style={"display":"none"}) testetsetse
+			h3(ng-show="!DataList.length") 这个时间段没有数据
+		.dialogBox.form-inline(ng-show="TimeDialog.show")
+			h3.mb20 时间段选择
+				span.fr(ng-click="TimeDialog.close()") X
+			div.mb20
+				strong 开始时间 
+				<time-choice ng-time="TimeDialog.begin">dddd</time-choice>
+			div.mb20
+				strong 结束时间 
+				<time-choice ng-time="TimeDialog.end">dddd</time-choice>
+			button.btn.btn-success.btn-block.timechoice_btn(ng-click="TimeDialog.sure()") 确定
+
 	script(src="/js/order.js")
-
-	//- script(src="/js/libs/bower_components/jquery/dist/jquery.js")
-
-	//- script.
-	//- 	var Btn = $("#testBtn");
-	//- 	var Element = $("#test");
-		
-	//- 	Btn.on("click" , function(){
-	//- 		//- Element.fadeIn(1000);
-	//- 		//- Element.queue(function(){
-	//- 		//- 	console.log(11);
-	//- 		//- 	$(this).text("hello");
-	//- 		//- 	$(this).dequeue();
-	//- 		//- }).delay(3000);
-	//- 		//- //- Element.queue(function(){
-	//- 		//- 	Element.fadeOut(1000);
-	//- 		//- });
-
-	//- 		//- Element.fadeIn(1000).delay(3000).fadeOut(1000);
-
-	//- 		//- console.log("helel")
-
-	//- 		Element.show().queue(function(){
-	//- 			console.log("queue");
-	//- 			$(this).show().dequeue();
-	//- 		}).delay(5000).queue(function(){
-	//- 			console.log("last")
-	//- 			$(this).hide();
-	//- 		})
-	//- 	});
-
-	//- 	//- Element.fadeIn(2000);
-		
-	//- 	var timer;
-	//- 	$("#reload").css("display" , "block");
-	//- 	timer = setTimeout(function(){
-	//- 		$("#reload").css("display" , "none");
-	//- 	} , 15000);
-
 
 
 

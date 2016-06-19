@@ -122,8 +122,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 		}
 
 		$scope.showDetail = function(item){
-			// alert(item.id);
-			window.open("/detail/"+item.id);
+			alert(item.id);
 		}
 
 		

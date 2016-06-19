@@ -38,16 +38,16 @@ router.use(function(req , res , next){
 router.post("/login" , function(req , res , next){
 	if(!req.body.phone || !req.body.password){
 		res.send({"state":0 , "msg":"手机号，密码不正确"});
-		next();
+		return next && next();
 	}
 	db.User.findOne({"phone":req.body.phone} , function(result){
 		if(!result){
 			res.json({"state":0 , "msg":"该手机号没有注册"});
-			next();
+			return next && next();
 		}
 		if(result.password != req.body.password){
 			res.json({"state":0 , "msg":"密码不正确"});
-			next();
+			return next && next();
 		}
 		//设置session中的数据
 		req.session.user.name = result.name;
@@ -162,7 +162,7 @@ router.post("/receive/addorder" , function(req , res , next){
 		// console.log()
 	}catch(e){
 		res.json({"state": 0 , "msg":"参数不对"});
-		next();
+		return next && next();
 	}
 	if(!req.body.total || !req.body.seller){
 		res.json({"state": 0 , "msg":"参数不对"});
@@ -252,7 +252,7 @@ function insertGoods (req , res , arr , order_id){
 	db.Goods.add(arr);
 }
 
-/* 查询订单 */
+/* 查询单个订单信息，返回订单数据和对应的货物数据 */
 router.get("/receive/select/:id" , function(req , res , next){
 	var ID = req.params.id;
 	if(ID && ID.toString().replace(/\D/g,"")){
@@ -292,6 +292,44 @@ router.get("/receive/select/:id" , function(req , res , next){
 	});
 });
 
+/* 写入默认的页码和页数 */
+function DefaultPageLimit(req){
+	req.body.limit /= 1;
+	req.body.page  /= 1;
+	if(!req.body.limit){
+		req.body.limit = 20;
+	}
+	if(!req.body.page){
+		req.body.page = 1;
+	}
+}
+
+router.post("/receive/list" , function(req , res , next){
+	if(!req.body.begin || !req.body.end){
+		res.json({
+			"state" : 0,
+			"msg"   : "没有时间参数"
+		});
+		return next && next();
+	}
+
+	DefaultPageLimit(req);
+
+	db.Order.selectByTime({
+		"u_id" : req.session.user.id,
+		"begin": req.body.begin,
+		"end"  : req.body.end,
+		"limit": req.body.limit,
+		"page" : req.body.page
+	} , function(result){
+		res.json({
+			"state" : 1,
+			"msg"   : "查询成功",
+			"data"  : result
+		})
+	});
+});
+
 /* ========= goods表相关请求 ========= */
 router.post("/goods/delete/:id" , function(req , res , next){
 	if(!req.params.id){
@@ -299,7 +337,7 @@ router.post("/goods/delete/:id" , function(req , res , next){
 			"state" : 0,
 			"msg"   : "删除失败，没有ID"
 		});
-		next();
+		return next && next();
 	}
 	db.Goods.delete({
 		"id" : req.params.id

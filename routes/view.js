@@ -45,10 +45,10 @@ router.get("/order" , function(req , res , next){
 	res.render("order");
 });
 
-router.get("/detail/:id" , function(req , res , next){
+/*router.get("/detail/:id" , function(req , res , next){
 	console.log("id:" + req.params.id);
 	res.render("detail" , {"id":req.params.id});
-});
+});*/
 
 
 module.exports = router;

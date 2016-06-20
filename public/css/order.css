@@ -20,8 +20,9 @@
 	font-size: 16px;
 }
 .dealtime{
-	font-size: 14px;
-	color: #ccc;
+	font-size: 20px;
+	color: #000;
+	font-weight: bold;
 }
 .order-title{
 	border-bottom: 1px solid #ccc;
@@ -95,20 +96,6 @@ div.dialogBox{
 	width: 400px;
 	margin-left: -200px;
 	box-sizing: content-box;
-}
-.dialogBox h3 span{
-    width: 17px;
-    height: 17px;
-    line-height: 17px;
-    border-radius: 50%;
-    background: #090;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    padding: 3px;
-    font-size: 16px;
-    box-sizing: content-box;
 }
 .dialogBox select{
 	width: 80px;

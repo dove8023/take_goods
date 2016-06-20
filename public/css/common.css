@@ -34,3 +34,17 @@
 	text-align: center;
 	border-radius: 5px;
 }
+.dialogBox .closespan{
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    border-radius: 50%;
+    background: #090;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    padding: 3px;
+    font-size: 16px;
+    box-sizing: content-box;
+}

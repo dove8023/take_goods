@@ -3,17 +3,18 @@ extends ./layout.jade
 block title
 	title 交易查询
 	link(rel="stylesheet", href="/css/order.css")
+	link(rel="stylesheet", href="/css/detail.css")
 block content
 	section(ng-controller="Orders")
 		h1.tc.font 
-			a(ng-click="goHomePage()" , class="fl font0") 去首页
+			a(href="/" , class="fl font0") 去首页
 			|交易查询
 		
 		.order-box
 			.order-header(ng-tab , tab-class="btn-success")
-				button.btn.btn-default.btn-success(ng-click="timechoice('today')") 今日交易
+				button.btn.btn-default(ng-click="timechoice('today')") 今日交易
 				button.btn.btn-default(ng-click="timechoice('week')") 本周交易
-				button.btn.btn-default(ng-click="timechoice('month')") 本月
+				button.btn.btn-default.btn-success(ng-click="timechoice('month')") 本月
 				button.btn.btn-default(ng-click="timechoice('other')") 其它时间段
 				p 查询时间段：
 					span.dealtime {{showchecktime}}
@@ -29,14 +30,16 @@ block content
 					span.num {{$index+1}}
 					span.time {{item.createdAt | toTime}}
 					span {{item.seller}}
-					span {{item.total}}
+					span &nbsp;{{item.total}}
 					span {{item.operator}}
 					span {{item.comment | Dnull}}
 
 			h3(ng-show="!DataList.length") 这个时间段没有数据
+
+		//时间段选择弹出框
 		.dialogBox.form-inline(ng-show="TimeDialog.show")
 			h3.mb20 时间段选择
-				span.fr(ng-click="TimeDialog.close()") X
+				span.fr.closespan(ng-click="TimeDialog.close()") X
 			div.mb20
 				strong 开始时间 
 				<time-choice ng-time="TimeDialog.begin">dddd</time-choice>
@@ -44,6 +47,39 @@ block content
 				strong 结束时间 
 				<time-choice ng-time="TimeDialog.end">dddd</time-choice>
 			button.btn.btn-success.btn-block.timechoice_btn(ng-click="TimeDialog.sure()") 确定
+
+		//订单详情弹出框
+		.detail.dialogBox(ng-show="DetailDialog.show")
+			h3.mb10.tc 订单详情查看
+				span.fr.closespan(ng-click="DetailDialog.close()") X
+
+			.detail-info.mb5
+				|卖货人：
+				strong.mr30 {{DetailDialog.OrderData.seller}}
+				|交易时间：
+				strong {{DetailDialog.OrderData.createdAt | toTime}}
+			table.table.table-striped.table-hover.detail-table
+				tr.success
+					th 序号
+					th 品种名称
+					th 价格
+					th 净重
+					th 小计
+				tr(ng-repeat="item in DetailDialog.GoodsList")
+					td {{$index+1}}
+					td {{item.type_name}}
+					td {{item.price}}元/kg
+					td {{item.weight}}kg
+					td {{item.one_total}}元
+			h4(ng-show="!DetailDialog.GoodsList.length") 没有货物数据
+			.detail-info2
+				| 合计：
+				strong {{DetailDialog.OrderData.total}}
+				|元
+
+			.detail-btns
+				a.btn.btn-success(href="/receive?id={{DetailDialog.item.id}}" , target="_blank") 修改
+				button.btn.btn-info(ng-click="DetailDialog.close()") 返回
 
 	script(src="/js/order.js")
 

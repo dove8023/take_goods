@@ -81,7 +81,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 					//delete it in database.
 					$http.post("/api/goods/delete/"+item.id).success(function(result){
 						console.log(result);
-					})
+					});
 				}
 			}
 		}
@@ -148,10 +148,48 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 				if(result.state == 1){
 					// location.href = location.href;
 					alert("保存成功");
-					return;
+					$scope.DetailDialog.open(result.data.order_id);
+
+				}else{
+					alert(result.msg);
 				}
-				alert(result.msg);
 			});
+		}
+
+
+
+		$scope.DetailDialog = {
+			"show" : false,
+			"Ecover": document.getElementById("Cover"),
+			"ID" : null,
+			open   : function(id){
+				this.ID = id;
+				this.show = true;
+				this.Ecover.style.display = "block";
+				this.selectData();
+			},
+			close  : function(){
+				this.show = false;
+				this.Ecover.style.display = "none";
+				this.OrderData = null;
+				this.GoodsList = null;
+				
+				/*location.href = location.href+"?id=" + this.ID;*/
+			},
+			selectData : function(){
+				var _this = this;
+				$http.get("/api/receive/select/"+_this.ID).success(function(result){
+					if(!result.state){
+						alert("数据请求错误");
+						return false;
+					}
+					_this.OrderData = result.data;
+					_this.GoodsList = result.goodsData.rows;
+					console.log(result);
+				});
+			},
+			OrderData : null,
+			GoodsList : null
 		}
 	}]);
 

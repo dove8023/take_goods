@@ -3,6 +3,7 @@ extends ./layout.jade
 block title
 	title 收货界面
 	link(rel="stylesheet", href="/css/receive.css")
+	link(rel="stylesheet", href="/css/detail.css")
 block content
 	section(ng-controller="Orders")
 		h1.tc.font 
@@ -74,25 +75,41 @@ block content
 					|保存
 
 
+		//订单详情弹出框
+		.detail.dialogBox(ng-show="DetailDialog.show")
+			h3.mb10.tc 订单详情查看
+				span.fr.closespan(ng-click="DetailDialog.close()") X
+
+			.detail-info.mb5
+				|卖货人：
+				strong.mr30 {{DetailDialog.OrderData.seller}}
+				|交易时间：
+				strong {{DetailDialog.OrderData.createdAt | toTime}}
+			table.table.table-striped.table-hover.detail-table
+				tr.success
+					th 序号
+					th 品种名称
+					th 价格
+					th 净重
+					th 小计
+				tr(ng-repeat="item in DetailDialog.GoodsList")
+					td {{$index+1}}
+					td {{item.type_name}}
+					td {{item.price}}元/kg
+					td {{item.weight}}kg
+					td {{item.one_total}}元
+			h4(ng-show="!DetailDialog.GoodsList.length") 没有货物数据
+			.detail-info2
+				| 合计：
+				strong {{DetailDialog.OrderData.total}}
+				|元
+
+			.detail-btns
+				button.btn.btn-success(ng-click="DetailDialog.close()") 继续修改
+				a.btn.btn-info(ng-click="goHomePage()") 去首页
 	//- script(src="/js/libs/bower_components/jquery/dist/jquery.js")
 	script(src="/js/receive.js")
-	//- script.
-	//- 	$("#abc").val("abcdefg");
 
-	//- 	jQuery.ajax({
-	//- 	    url:"",
-	//- 	    dataType:"jsonp",
-	//- 	    type:"get",
-	//- 	    success: function(data){
-	//- 	        //...调用成功代码
-	//- 	        alert(111);
-	//- 	    },
-	//- 	    error: function(XMLHttpRequest, textStatus, errorThrown){
-	//- 	        //- alert(XMLHttpRequest.status); //查看请求状态
-	//- 	        console.log(XMLHttpRequest.status)
-	//- 	        //调用失败代码
-	//- 	    }
-	//- 	});
 
 
 

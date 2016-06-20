@@ -8,7 +8,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 
 	var app = angular.module("myApp" , ["ngCookies" , "angular_config" , "Filter" , "angular_directive"]);
 
-
+// document.getElementById("Cover").style.display = "block";
 	app.controller("Orders" , ["$scope" , "$rootScope" , "$http" , "$timeout" , function($scope , $rootScope , $http , $timeout){
 		/* 其它时间选择弹出框 */
 		$scope.TimeDialog = {
@@ -48,7 +48,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 						return;
 					}
 
-					console.log(obj);
+					// console.log(obj);
 					$scope.afterTimeChoice(obj);
 					_this.close();
 				} , 200);
@@ -100,6 +100,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			$scope.afterTimeChoice(obj);
 		}
 
+
 		/* 展示查询时间段 */
 		$scope.showchecktime = "";
 		$scope.afterTimeChoice = function(obj){
@@ -107,7 +108,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			$scope.getData(obj);
 		}
 		
-		/* 获取数据 */
+		/* 获取列表数据 */
 		$scope.DataList = [];
 		$scope.getData = function(options){
 			options.limit = 50;
@@ -121,28 +122,46 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			});
 		}
 
+		/* 默认选择本周 */
+		$scope.timechoice("month");
+
 		$scope.showDetail = function(item){
-			// alert(item.id);
-			window.open("/detail/"+item.id);
+			$scope.DetailDialog.open(item);
 		}
 
+		$scope.DetailDialog = {
+			"show" : false,
+			"Ecover": document.getElementById("Cover"),
+			"item" : null,
+			open   : function(obj){
+				this.show = true;
+				this.Ecover.style.display = "block";
+				this.item = obj;
+				this.selectData();
+			},
+			close  : function(){
+				this.show = false;
+				this.Ecover.style.display = "none";
+				this.OrderData = null;
+				this.GoodsList = null;
+			},
+			selectData : function(){
+				var _this = this;
+				$http.get("/api/receive/select/"+_this.item.id).success(function(result){
+					if(!result.state){
+						alert("数据请求错误");
+						return false;
+					}
+					_this.OrderData = result.data;
+					_this.GoodsList = result.goodsData.rows;
+					console.log(result);
+				});
+			},
+			OrderData : null,
+			GoodsList : null
+		}
 		
 	}]);
-
-
-	/*describe("button directive" , function(){
-		var $complie , $rootScope;
-		beforeEach(module("myApp"));
-		beforeEach(inject(function(_$compile_ , _$rootScope_){
-			$comlie = _$comlie_;
-			$rootScope = _$rootScope_;
-		}));
-
-		it('adds a "btn" class to the button element' , function(){
-			var element = $comlie('<button></button>')($rootScope);
-			expect(element.hasClass("btn").toBe(true));
-		})
-	});*/
 
 	angular.bootstrap(document , ["myApp"]);
 });

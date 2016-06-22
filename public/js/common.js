@@ -8,9 +8,9 @@
 require.config({
 	baseUrl:'/js/',
 	paths: {
-		angular : "./libs/bower_components/angular/angular",
+		angular : "./libs/bower_components/angular/angular.min",
 		angularCookies : "./libs/bower_components/angular-cookies/angular-cookies",
-		jquery  : "./libs/bower_components/jquery/dist/jquery"
+		jquery  : "./libs/bower_components/jquery/dist/jquery.min"
 
 		/*APP : 'app',		
 		Zepto: 'lib/zepto-1.1.4',

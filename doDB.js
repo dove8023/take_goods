@@ -32,7 +32,7 @@ Type.prototype.findAll = function(options , callback){
 		options.page = 1; //默认第一页
 	}
 	if(!options.limit){
-		options.limit = 20; //默认每页20条
+		options.limit = 2000; //默认每页2000条
 	}
 	db.Type.findAndCountAll({
 		"where" : {
@@ -203,6 +203,7 @@ Goods.prototype.upsert = function(options , callback){
 	})
 }
 
+/* 依据订单ID查询对应的数据 */
 Goods.prototype.select = function(options , callback){
 	if(options.id){
 		db.Goods.findOne({
@@ -236,6 +237,26 @@ Goods.prototype.select = function(options , callback){
 		});
 	}
 }
+
+/* 依据时间段查询所有的货物数据 */
+Goods.prototype.selectByTime = function(options , callback){
+	db.Goods.findAndCountAll({
+		"where" : {
+			"u_id" : options.u_id,
+			"state": 1,
+			"createdAt" : {
+				"$gt" : options.begin,
+				"$lt" : options.end
+			}
+		},
+		"order" : [
+			["id" , "ASC"]
+		]
+	}).then(function(result){
+		return callback && callback(result);
+	});
+}
+
 
 
 Goods.prototype.delete = function(options , callback){

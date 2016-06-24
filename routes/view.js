@@ -19,7 +19,7 @@ router.use(function(req , res , next){
 	/*if(!req.session.user.session_id){
 		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
 	}else{
-		next();
+		next();return;
 	}*/
 
 	// test 去掉登陆检测
@@ -32,7 +32,7 @@ router.use(function(req , res , next){
 
 /* type page. */
 router.get("/type/" , function(req , res , next){
-	res.render("type/index");
+	res.render("type");
 });
 
 /* receive page. */
@@ -45,10 +45,10 @@ router.get("/order" , function(req , res , next){
 	res.render("order");
 });
 
-/*router.get("/detail/:id" , function(req , res , next){
-	console.log("id:" + req.params.id);
-	res.render("detail" , {"id":req.params.id});
-});*/
+/* stats page. */
+router.get("/stats" , function(req , res , next){
+	res.render("stats");
+});
 
 
 module.exports = router;

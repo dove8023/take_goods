@@ -357,7 +357,41 @@ router.post("/goods/delete/:id" , function(req , res , next){
 	});
 });
 
+/* 返回某一个时间段的所有货物数据 */
+router.post("/stats" , function(req , res , next){
+	if(!req.body.begin || !req.body.end){
+		res.json({
+			"state" : 0,
+			"msg"   : "时间参数不正确"
+		});
+	}
+	//get the type list.
+	/* 暂时取消分页查询 */
+	db.Goods.selectByTime({
+		"u_id" : req.session.user.id,
+		"begin": req.body.begin,
+		"end"  : req.body.end
+	} , function(result){
+		/*var index = {},  //记录类型数据对应的位置
+			Data  = [];
+		for(var i=0,len=result.rows.length;i<len;i++){
+			var obj = {};
+			obj.type_id = result.rows[i].id;
+			obj.type_name=result.rows[i].name;
+			obj.goodsData = [];
+			Data.push(obj);
+			index['tid_'+obj.type_id] = i;
+		}*/
 
+
+		res.json({
+			"state" : 1,
+			"msg"   : "查询成功",
+			"data"  : result,
+		})
+	});
+
+});
 
 module.exports = router;
 

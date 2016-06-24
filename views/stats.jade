@@ -1,0 +1,85 @@
+extends ./layout.jade
+
+block title
+	title 交易详情查询
+	link(rel="stylesheet", href="/css/order.css")
+	link(rel="stylesheet", href="/css/detail.css")
+	link(rel="stylesheet", href="/css/stats.css")
+block content
+	input#orderID(type="hidden" value="#{id}")
+	section(ng-controller="Stats")
+		a(href="/" , class="fl font2") 去首页
+		h1.tc.font  货物统计
+		
+		.order-box
+			.order-header(ng-tab , tab-class="btn-success")
+				button.btn.btn-default.btn-success(ng-click="timechoice('month')") 本月
+				button.btn.btn-default(ng-click="timechoice('month3')") 最近3月
+				button.btn.btn-default(ng-click="timechoice('other')") 其它时间段
+			div.mb20 查询时间段：
+				div.fr.stats-info
+					|总计：
+					button.btn.btn-default.disabled {{Count | Money}}
+					|&nbsp;元
+				span.dealtime {{showchecktime}}
+
+			ul.stats-list
+				li(ng-repeat="item in List")
+					span.num {{$index+1}}
+					span.name {{item.type_name}}
+					span.deal
+						|交易
+						strong {{item.count}}
+						|笔
+					span.weight
+						|总重&nbsp;
+						strong {{item.weight | Money}}
+						|&nbsp;kg
+					span.money
+						|花费&nbsp;
+						strong {{item.money | Money}}
+						|&nbsp;元
+					span.btn.btn-info(ng-click="checkDetail(item)") 查看
+					span.btn.btn-default.mb20 全年统计
+					dl.stats-one-list(ng-show="item.show")
+						dt.mb5
+							span 序号
+							span 价格
+							span 重量
+							span 小计
+							span 卖货人
+							span 收货人
+							span 操作
+						dd.mb5.clearfix(ng-repeat="little in item.goodsData")
+							span
+								strong {{$index+1}}
+							span {{little.price}} 元/kg
+							span {{little.weight}} kg
+							span {{little.one_total}} 元
+							span {{little.seller}}
+							span {{little.operator}}
+							span
+								button.btn.btn-default.btn-sm(ng-click="goReceive(little)") 修改
+
+
+		//时间段选择弹出框
+		.dialogBox.form-inline(ng-show="TimeDialog.show")
+			h3.mb20 时间段选择
+				span.fr.closespan(ng-click="TimeDialog.close()") X
+			div.mb20
+				strong 开始时间 
+				<time-choice ng-time="TimeDialog.begin">dddd</time-choice>
+			div.mb20
+				strong 结束时间 
+				<time-choice ng-time="TimeDialog.end">dddd</time-choice>
+			button.btn.btn-success.btn-block.timechoice_btn(ng-click="TimeDialog.sure()") 确定
+
+	script(src="/js/stats.js")
+
+
+
+
+
+
+
+

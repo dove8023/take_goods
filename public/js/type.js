@@ -47,7 +47,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 		
 		/* 暂时不考虑分页的情况 */
 		$http.get("/api/type/list").success(function(result){
-			console.log(result);
+			// console.log(result);
 			$scope.List = result.data.rows;
 		});
 
@@ -63,7 +63,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 					"name" : $scope.Dialog.data.name,
 					"price": $scope.Dialog.data.price,
 				}).success(function(result){
-					console.log(result);
+					// console.log(result);
 					if(result.state == 1){
 						$scope.List.unshift(result.data);
 					}else{
@@ -78,7 +78,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 					"price": $scope.Dialog.data.price,
 					"id"   : $scope.Dialog.data.id
 				}).success(function(result){
-					console.log(result);
+					// console.log(result);
 					if(result.state == 1){
 						$scope.List[$scope.Dialog.data.index/1].name = $scope.Dialog.data.name;
 						$scope.List[$scope.Dialog.data.index/1].price = $scope.Dialog.data.price;
@@ -98,7 +98,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 			$http.post("/api/type/delete" , {
 				"id" : id
 			}).success(function(result){
-				console.log(result);
+				// console.log(result);
 				if(result.state == 1){
 					$scope.List.splice($scope.Dialog.data.index , 1);
 					alert("删除成功");

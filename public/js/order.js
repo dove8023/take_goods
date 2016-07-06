@@ -154,7 +154,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 					}
 					_this.OrderData = result.data;
 					_this.GoodsList = result.goodsData.rows;
-					console.log(result);
+					// console.log(result);
 				});
 			},
 			OrderData : null,

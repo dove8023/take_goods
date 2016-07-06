@@ -39,7 +39,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 				}else{
 					alert(result.msg);
 				}
-				console.log(result);
+				// console.log(result);
 			})
 		}
 

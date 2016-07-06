@@ -49,7 +49,7 @@ require(["angular" , "angularCookies" , "angularChart" , "./common/angular_confi
 						return;
 					}
 
-					console.log(obj);
+					// console.log(obj);
 					$scope.afterTimeChoice(obj);
 					_this.close();
 				} , 200);
@@ -88,7 +88,7 @@ require(["angular" , "angularCookies" , "angularChart" , "./common/angular_confi
 					return;
 			}
 
-			console.log(obj);
+			// console.log(obj);
 			$scope.afterTimeChoice(obj);
 		}
 
@@ -227,7 +227,7 @@ require(["angular" , "angularCookies" , "angularChart" , "./common/angular_confi
 			open   : function(obj){
 				this.show = true;
 				this.Ecover.style.display = "block";
-				console.log(obj);
+				// console.log(obj);
 				//show the type name.
 				this.typename = obj.type_name;
 				this.typeid   = obj.type_id;
@@ -244,7 +244,7 @@ require(["angular" , "angularCookies" , "angularChart" , "./common/angular_confi
 				//显示等待
 				_this.loading = true;
 				$http.post("/api/stats/type" , { "typeid" : _this.typeid , "year" : _this.year }).success(function(result){
-					console.log(result);
+					// console.log(result);
 					//loading close.
 					_this.loading = false;
 					//整理数据并显示

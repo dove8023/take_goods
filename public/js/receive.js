@@ -58,7 +58,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 				}
 
 				//请求查询goods表
-				console.log(result);
+				// console.log(result);
 				$scope.Data = result.data;
 				$scope.List = result.goodsData.rows;
 			}).error(function(result){
@@ -80,7 +80,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 				if(!item.newone){
 					//delete it in database.
 					$http.post("/api/goods/delete/"+item.id).success(function(result){
-						console.log(result);
+						// console.log(result);
 					});
 				}
 			}
@@ -141,7 +141,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			
 			var sendData = { "data" : JSON.stringify($scope.Data) };
 
-			console.log($scope.Data);
+			// console.log($scope.Data);
 			// return;
 			$http.post("/api/receive/addorder" , sendData).success(function(result){
 				// console.log(result);
@@ -185,7 +185,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 					}
 					_this.OrderData = result.data;
 					_this.GoodsList = result.goodsData.rows;
-					console.log(result);
+					// console.log(result);
 				});
 			},
 			OrderData : null,

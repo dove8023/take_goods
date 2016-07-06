@@ -4,14 +4,13 @@
  * author  @ Mr.He
 */
 
-require(["angular" , "angularCookies" , "./common/angular_config" , "./common/filter" , "./common/directive"] , function( angular , angularCookies , angular_config , Filter , directive){
+require(["angular" , "angularCookies" , "angularChart" , "./common/angular_config" , "./common/filter" , "./common/directive"] , function( angular , angularCookies , angularChart , angular_config , Filter , directive){
 
-	var app = angular.module("myApp" , ["ngCookies" , "angular_config" , "Filter" , "angular_directive"]);
+	var app = angular.module("myApp" , ["ngCookies" , "angular_config" , "Filter" , "angular_directive" , "chart.js"]);
 
 
 	app.controller("Stats" , ["$scope" , "$rootScope" , "$http" , "$timeout" , function($scope , $rootScope , $http , $timeout){
 		
-
 		/* 其它时间选择弹出框 */
 		$scope.TimeDialog = {
 			"show" : false,
@@ -209,6 +208,100 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 			window.open("/receive?id="+obj.o_id);
 		}
 
+		//全年统计数据对话框
+		$scope.YearDialog = {
+			"show" : false,
+			"Ecover": document.getElementById("Cover"),
+			"loading": true,
+			"typename": null,
+			"typeid"  : null,
+			"year"    : new Date().getFullYear(),
+			"yearArr" : (function(){
+				var thisYear = new Date().getFullYear(),
+					arr = [];
+				for(var i=0;i<5;i++){
+					arr.push(thisYear-i);
+				}
+				return arr;
+			})(),
+			open   : function(obj){
+				this.show = true;
+				this.Ecover.style.display = "block";
+				console.log(obj);
+				//show the type name.
+				this.typename = obj.type_name;
+				this.typeid   = obj.type_id;
+				//get the data.
+				this.getData();
+			},
+			close  : function(){
+				this.show = false;
+				this.Ecover.style.display = "none";
+			},
+			//获取数据
+			getData : function(){
+				var _this = this;
+				//显示等待
+				_this.loading = true;
+				$http.post("/api/stats/type" , { "typeid" : _this.typeid , "year" : _this.year }).success(function(result){
+					console.log(result);
+					//loading close.
+					_this.loading = false;
+					//整理数据并显示
+					_this.drawCanvas(_this.dealData(result.data));
+				});
+			},
+			//整理数据
+			dealData : function(data){
+				var allArr = [];
+				for(var i=0;i<=12;i++){
+					var obj = {"weight" : 0, "money": 0 , "month" : i+1 };
+					allArr.push(obj);
+				}
+				for(var j=0;j<data.count;j++){
+					var thisData = data.rows[j];
+					if(thisData.weight/1 && thisData.one_total/1){
+						var	month    = thisData.createdAt.split("-")[1] / 1;
+						allArr[month].weight += thisData.weight/1;
+						allArr[month].money += thisData.one_total/1;
+					}
+				}
+				return allArr;
+			},
+			drawData : [[] , []],
+			//绘制图表
+			drawCanvas : function(obj){
+				// this.drawData[0] = obj.
+				this.drawData[0] = [];
+				this.drawData[1] = [];
+				for(var i=0,len=obj.length;i<len;i++){
+					this.drawData[0].push(obj[i].weight);
+					this.drawData[1].push(obj[i].money);
+				}
+			}
+		};
+
+		$scope.labels = ["0", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+		$scope.series = ['重量', '花费'];
+		$scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+		$scope.options = {
+			scales: {
+			  yAxes: [
+			    {
+			      id: 'y-axis-1',
+			      type: 'linear',
+			      display: true,
+			      position: 'left'
+			    },
+			    {
+			      id: 'y-axis-2',
+			      type: 'linear',
+			      display: true,
+			      position: 'right'
+			    }
+			  ]
+			}
+		};
 	}]);
 
 

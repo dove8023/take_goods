@@ -240,15 +240,20 @@ Goods.prototype.select = function(options , callback){
 
 /* 依据时间段查询所有的货物数据 */
 Goods.prototype.selectByTime = function(options , callback){
-	db.Goods.findAndCountAll({
-		"where" : {
+	var whereObj = {
 			"u_id" : options.u_id,
 			"state": 1,
 			"createdAt" : {
 				"$gt" : options.begin,
 				"$lt" : options.end
 			}
-		},
+		};
+	if(options.typeid){
+		whereObj["type_id"] = options.typeid;
+	}
+	console.log(whereObj);
+	db.Goods.findAndCountAll({
+		"where" : whereObj,
 		"order" : [
 			["id" , "ASC"]
 		]

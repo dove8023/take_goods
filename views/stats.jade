@@ -40,10 +40,11 @@ block content
 						strong {{item.money | Money}}
 						|&nbsp;元
 					span.btn.btn-info(ng-click="checkDetail(item)") 查看
-					span.btn.btn-default.mb20 全年统计
+					span.btn.btn-default.mb20(ng-click="YearDialog.open(item)") 全年统计
 					dl.stats-one-list(ng-show="item.show")
 						dt.mb5
 							span 序号
+							span 时间
 							span 价格
 							span 重量
 							span 小计
@@ -53,6 +54,7 @@ block content
 						dd.mb5.clearfix(ng-repeat="little in item.goodsData")
 							span
 								strong {{$index+1}}
+							span {{little.createdAt | toTime}}
 							span {{little.price}} 元/kg
 							span {{little.weight}} kg
 							span {{little.one_total}} 元
@@ -60,7 +62,6 @@ block content
 							span {{little.operator}}
 							span
 								button.btn.btn-default.btn-sm(ng-click="goReceive(little)") 修改
-
 
 		//时间段选择弹出框
 		.dialogBox.form-inline(ng-show="TimeDialog.show")
@@ -73,6 +74,22 @@ block content
 				strong 结束时间 
 				<time-choice ng-time="TimeDialog.end">dddd</time-choice>
 			button.btn.btn-success.btn-block.timechoice_btn(ng-click="TimeDialog.sure()") 确定
+
+
+		//全年走势弹出框
+		.detail.dialogBox(ng-show="YearDialog.show")
+			h3.mb10 {{YearDialog.typename}} &nbsp;&nbsp;全年趋势
+				span.fr.closespan(ng-click="YearDialog.close()") X
+
+			div(ng-show="!YearDialog.loading")
+				select.form-group.font3(ng-model="YearDialog.year" , ng-options="year for year in YearDialog.yearArr" , ng-change="YearDialog.getData()")
+					
+				canvas#line.chart.chart-line(chart-data="YearDialog.drawData",chart-labels="labels", chart-series="series",chart-options="options",chart-dataset-override="datasetOverride", chart-click="onClick")
+			div.img-loading(ng-show="YearDialog.loading")
+				img(src="/images/loading.gif" , class="")
+
+			.detail-btns
+				button.btn.btn-info(ng-click="YearDialog.close()") 返回
 
 	script(src="/js/stats.js")
 

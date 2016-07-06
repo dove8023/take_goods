@@ -69,7 +69,7 @@ sequelize.sync();
 
 
 
-/*User.build({"name":"mast" , "phone":15210593133 , "password" : "abc123" , "level" : "01" , "email" : "123456789@qq.com" , "city" : "深圳"}).save();*/
+User.build({"name":"何老板" , "phone":13908294569 , "password" : "He5552539" , "level" : "01" , "email" : "616082046@qq.com" , "city" : "巴中"}).save();
 
 /*Order.build({"u_id":1 ,"operator" : "佐助" , "seller":"九尾32"  , "total" : 3215.46}).save();
 

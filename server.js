@@ -44,9 +44,9 @@ app.use(function(req , res , next){
 		user = req.session.user = {};
 	}
 
-	console.log('%s %s %s' , req.method , req.url , req.path);
+	// console.log('%s %s %s' , req.method , req.url , req.path);
 
-	console.log(req.session.user);
+	// console.log(req.session.user);
 	next();
 });
 

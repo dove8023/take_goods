@@ -18,22 +18,6 @@ router.get("/loginout" , function( req , res , next ){
 	res.redirect("/");
 });
 
-/* 登陆检查 */
-router.use(function(req , res , next){
-	/*if(!req.session.user.session_id){
-		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
-	}else{
-		next();
-	}*/
-
-	// test 去掉登陆检测
-	if(!req.session.user.id){
-		req.session.user.id = 1;
-		req.session.user.name = "master";
-	}
-	next();
-});
-
 /* 登陆请求 */
 router.post("/login" , function(req , res , next){
 	if(!req.body.phone || !req.body.password){
@@ -57,6 +41,23 @@ router.post("/login" , function(req , res , next){
 		res.cookie("session_id" , req.sessionID , { maxAge : 7200000 });
 		res.json({"state":1, "msg" : "login Success" , "data":result});
 	});
+});
+
+/* 登陆检查 */
+router.use(function(req , res , next){
+	console.log("api");
+	if(!req.session.user.session_id){
+		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
+	}else{
+		next();
+	}
+
+	// test 去掉登陆检测
+	/*if(!req.session.user.id){
+		req.session.user.id = 1;
+		req.session.user.name = "master";
+	}
+	next();*/
 });
 
 /* =================== 类型相关请求 ============== */
@@ -392,6 +393,32 @@ router.post("/stats" , function(req , res , next){
 	});
 
 });
+
+
+/* 返回某一年中某一类型的所有数据 */
+router.post("/stats/type" , function(req , res , next){
+	if(!req.body.year || !req.body.typeid){
+		res.json({
+			"state" : 0,
+			"msg"   : "时间参数不正确"
+		});
+	}
+
+	db.Goods.selectByTime({
+		"u_id" : req.session.user.id,
+		"begin": req.body.year.toString(),
+		"end"  : (req.body.year/1 + 1).toString(),
+		"typeid": req.body.typeid
+	} , function(result){
+		res.json({
+			"state" : 1,
+			"msg"   : "查询成功",
+			"data"  : result,
+		})
+	});
+});
+
+
 
 module.exports = router;
 

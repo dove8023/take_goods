@@ -10,6 +10,8 @@ require.config({
 	paths: {
 		angular : "./libs/bower_components/angular/angular.min",
 		angularCookies : "./libs/bower_components/angular-cookies/angular-cookies",
+		angularChart : "./libs/bower_components/angular-chart.js/dist/angular-chart",
+		chart   : "./libs/bower_components/Chart.js/Chart",
 		jquery  : "./libs/bower_components/jquery/dist/jquery.min"
 
 		/*APP : 'app',		
@@ -28,6 +30,10 @@ require.config({
 		angularCookies : {
 			"exports" : "angularCookies",
 			"deps"	  : ['angular']
+		},
+		angularChart : {
+			"exports" : "angularChart",
+			"deps"    : ['angular' , 'chart']
 		}
 	}
 });

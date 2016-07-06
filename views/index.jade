@@ -23,7 +23,7 @@ block content
 				input(type="password" , name="password" ,ng-model="password" , placeholder="请输入密码")
 			.form-group.loginBox_btn.clearfix
 				input(type="submit" , value="登陆" , class="fl")
-				button(class="fl") 注册
+				//- button(class="fl") 注册
 
 	section(ng-show="Logined" , ng-controller="Manage")#manageSection
 		h1 Manage 
@@ -40,7 +40,7 @@ block content
 			li
 				a(href="/stats/")
 					|数据统计
-			li
+			//- li
 				a(href="#")
 					|帐号管理
 			li

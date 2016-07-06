@@ -16,18 +16,22 @@ router.get("/" , function(req , res , next){
 /* need login page. */
 
 router.use(function(req , res , next){
-	/*if(!req.session.user.session_id){
+	if(req.path == "/api/login" || req.path == "/api/loginout"){
+		next();
+		return;
+	}
+	if(!req.session.user.session_id){
 		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
 	}else{
-		next();return;
-	}*/
+		next();
+	}
 
 	// test 去掉登陆检测
-	if(!req.session.user.id){
+	/*if(!req.session.user.id){
 		req.session.user.id = 1;
 		req.session.user.name = "master";
 	}
-	next();
+	next();*/
 });
 
 /* type page. */

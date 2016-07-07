@@ -24,19 +24,19 @@ block content
 					select.form-control(ng-model="AA" , ng-options="AA.name for AA in TypeList" , ng-change="typechange(AA , {{$index}})" , ng-if="item.newone")
 						option(value="") 请选择类型
 					button.fl.btn.btn-default.disabled(ng-if="!item.newone") {{item.type_name}}
-					label.price.mr30
+					label.price.mr30.fr_input
 						|价格
 						input(type="text" , ng-model="item.price").form-control
 						|元/kg
-					label.weight.mr20
+					label.weight.mr20.fr_input
 						|净重
 						input(type="text" , ng-model="item.weight").form-control
 						|kg
-					span
+					span.fr_input
 						|小计：
 						strong {{ item.weight * item.price | Money}}
 						|元
-					button.btn.btn-danger.fr(ng-click="deletItem($index , item)")
+					button.btn.btn-danger.fr.fr_input(ng-click="deletItem($index , item)")
 						|删除
 				p(ng-show="!List.length") 没有记录
 				//- li

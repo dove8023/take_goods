@@ -79,3 +79,27 @@
 .r_opertor label textarea{
 	resize: none;
 }
+
+
+@media screen and (max-width: 450px) {
+	.receive-list,
+	.r_opertor{
+		width: 100%;
+	}
+	.receive-list .fr_input{
+		clear: both;
+		float: right;
+		margin: 0 10px 10px 0;
+		text-align: left;
+		width: 200px;
+	}
+	.receive-list .fr_input input{
+		display: inline-block;
+	}
+	.receive-list button.fr_input{
+		width: 100px;
+		text-align: center;
+	}
+}
+
+

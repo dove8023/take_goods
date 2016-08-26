@@ -9,9 +9,11 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	cookieParser = require("cookie-parser"),
 	session = require("express-session"),
-	db  = require("./setup");
-
-
+	db  = require("./setup"),
+	favicon = require('serve-favicon'),
+	path = require("path"),
+	log4js = require("./log");
+	// RedisStore = require("connect-redis")(session);
 
 var app = express();
 
@@ -20,7 +22,7 @@ app.set("view engine" , "jade");
 app.set("views" , __dirname + "/views");
 
 app.use(express.static(__dirname + "/public"));
-
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,6 +33,15 @@ app.use(session({
 	"saveUninitialized":true,
 	"cookie":{ maxAge : 7200000 }
 }));
+
+
+/* 日志配置，启用 */
+log4js.configure();
+
+app.use(log4js.useLog());
+
+
+
 
 
 //路劲设置
@@ -45,11 +56,11 @@ app.use(function(req , res , next){
 	}
 
 	// console.log('%s %s %s' , req.method , req.url , req.path);
-
+	// logger.info(req.method);
+	// console.log(req.method);
 	// console.log(req.session.user);
 	next();
 });
-
 
 /* view 部分 */
 app.use("/" , viewRoute);
@@ -58,28 +69,7 @@ app.use("/" , viewRoute);
 app.use("/api" , apiRoute);
 
 
-// /* 用户相关 */
-// app.use("/user" , userRoute);
 
-
-// //收获界面
-// // Receiving
-// app.use("/receive" , receiveRoute);
-
-// //交易查看
-// // order
-
-// //类型管理
-// app.use("/type" , typeRoute);
-
-
-// //数据统计
-
-
-
-
-
-
-app.listen(80 , function(){
+app.listen(3000 , function(){
 	console.log("server running");
 });

@@ -6,3 +6,6 @@ bower_components/
 
 # 数据库文件
 /config.json
+
+# log文件
+.log

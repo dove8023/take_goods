@@ -16,6 +16,7 @@ router.get("/" , function(req , res , next){
 /* need login page. */
 
 router.use(function(req , res , next){
+	
 	if(req.path == "/api/login" || req.path == "/api/loginout"){
 		next();
 		return;

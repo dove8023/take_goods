@@ -9,3 +9,6 @@ bower_components/
 
 # log文件
 /logs
+
+# 过滤系统记录文件
+.out

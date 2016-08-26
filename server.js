@@ -4,6 +4,7 @@
  * author@Mr.He
 */
 
+const PORT = process.env.NODE_ENV == "development" ? 3000 : 80;
 
 var express = require("express"),
 	bodyParser = require("body-parser"),
@@ -68,8 +69,6 @@ app.use("/" , viewRoute);
 /* api */
 app.use("/api" , apiRoute);
 
-
-
-app.listen(80 , function(){
+app.listen(PORT , function(){
 	console.log("server running");
 });

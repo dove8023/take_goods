@@ -8,4 +8,4 @@ bower_components/
 /config.json
 
 # log文件
-.log
+/logs

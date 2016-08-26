@@ -4,10 +4,10 @@ const log4js = require("log4js");
 var config = {
     appenders : [
         {
-            type : "datefile" ,
+            type : "dateFile" ,
             filename : "logs/logfile.log",
             category : "cheese",
-            makLogSize: 5,
+            makLogSize: 3000,
             "pattern": "-yyyy-MM-dd",
             "alwaysIncludePattern": true
         },

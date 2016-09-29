@@ -16,7 +16,7 @@ var express      = require("express"),
 	favicon      = require('serve-favicon'),
 	path         = require("path"),
 	log4js       = require("./log"),
-	RedisStore = require("connect-redis")(session);
+	RedisStore   = require("connect-redis")(session);
 
 var app = express();
 
@@ -33,8 +33,8 @@ app.use(cookieParser());
 app.use(session({
 	"name"  : "session_id",
 	"secret": "mysecret",
-	"resave":false,
-	"saveUninitialized":true,
+	"resave":true,       //每获进行一次请求，就从写一次，只要一直请求一直不会过期
+	"saveUninitialized":true,  //对链接进来的所有客户端创建session
 	"cookie":{ 
 		maxAge : 7200000 ,
 		httpOnly : true

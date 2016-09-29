@@ -1,0 +1,32 @@
+extends ./layout.jade
+
+block title
+    title 首页
+    link(href="/css/index.css",rel="stylesheet")
+    meta(name="baidu-site-verification", content="mbNj7Rv9lG")
+block content
+
+    section(ng-controller="Manage")#manageSection
+        h1 Manage 
+        ul.index_manage
+            li
+                a(href="/receive")
+                    |收货界面
+            li
+                a(href="/order/")
+                    |交易查看界面
+            li
+                a(href="/type/")
+                    |品种管理
+            li
+                a(href="/stats/")
+                    |数据统计
+            //- li
+                a(href="#")
+                    |帐号管理
+            li
+                a(href="/api/loginout")
+                    |退出
+
+
+    script(src="/js/index.js")

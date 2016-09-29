@@ -8,7 +8,7 @@ block content
 
 	//判断是否有session_id这个cookie决定显示哪个
 
-	section#loginSection(ng-controller="Login", ng-show="!Logined")
+	section#loginSection(ng-controller="Login")
 
 		h1 Login Form
 			
@@ -25,27 +25,6 @@ block content
 				input(type="submit" , value="登陆" , class="fl")
 				//- button(class="fl") 注册
 
-	section(ng-show="Logined" , ng-controller="Manage")#manageSection
-		h1 Manage 
-		ul.index_manage
-			li
-				a(href="/receive")
-					|收货界面
-			li
-				a(href="/order/")
-					|交易查看界面
-			li
-				a(href="/type/")
-					|品种管理
-			li
-				a(href="/stats/")
-					|数据统计
-			//- li
-				a(href="#")
-					|帐号管理
-			li
-				a(href="/api/loginout")
-					|退出
 
 	section(style={"display":"none"})#registSection
 		h2

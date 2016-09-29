@@ -6,15 +6,17 @@
 
 const PORT = process.env.NODE_ENV == "development" ? 3000 : 80;
 
-var express = require("express"),
-	bodyParser = require("body-parser"),
+var express      = require("express"),
+	bodyParser   = require("body-parser"),
 	cookieParser = require("cookie-parser"),
-	session = require("express-session"),
-	db  = require("./mysql/setup"),
-	favicon = require('serve-favicon'),
-	path = require("path"),
-	log4js = require("./log");
-	// RedisStore = require("connect-redis")(session);
+	redis        = require("redis"),
+	redisConfig  = require("./db/redis.json"),
+	session      = require("express-session"),
+	db           = require("./mysql/setup"),
+	favicon      = require('serve-favicon'),
+	path         = require("path"),
+	log4js       = require("./log"),
+	RedisStore = require("connect-redis")(session);
 
 var app = express();
 
@@ -29,10 +31,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(session({
-	"secret":"mysecret",
+	"name"  : "session_id",
+	"secret": "mysecret",
 	"resave":false,
 	"saveUninitialized":true,
-	"cookie":{ maxAge : 7200000 }
+	"cookie":{ 
+		maxAge : 7200000 ,
+		httpOnly : true
+	},
+	"store" : new RedisStore({
+		"host" : redisConfig.host,
+		"port" : redisConfig.port
+	})
 }));
 
 
@@ -45,14 +55,8 @@ app.use(log4js.useLog());
 var viewRoute = require("./routes/view"),
 	apiRoute  = require("./routes/api");
 
-app.use(function(req , res , next){
-	var user = req.session.user;
 
-	if(!user){
-		user = req.session.user = {};
-	}
-	next();
-});
+
 
 /* view 部分 */
 app.use("/" , viewRoute);

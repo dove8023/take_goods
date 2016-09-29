@@ -13,9 +13,12 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 	app.controller("Login" , [ "$scope" , "$rootScope" , "$http" , "$cookies" , function($scope , $rootScope , $http , $cookies){
 		$rootScope.Logined = false;
 		// console.log($cookies.get("session_id"))
-		if($cookies.get("session_id")){
-			$cookies.get("session_id").length == 32 ? $rootScope.Logined = true : $rootScope.Logined = false;
-		}
+		// if($cookies.get("session_id")){
+		// 	$cookies.get("session_id").length == 32 ? $rootScope.Logined = true : $rootScope.Logined = false;
+		// 	// $rootScope.Logined = true;
+		// }else{
+		// 	// $rootScope.Logined = false;
+		// }
 
 		$scope.loginFn = function(){
 			if($scope.password == ""){
@@ -36,6 +39,7 @@ require(["angular" , "angularCookies" , "./common/angular_config"] , function( a
 					$rootScope.Logined = true;
 					localStorage.setItem("phone" , result.data.phone);
 					localStorage.setItem("password" , result.data.password);
+					location.href = "/";
 				}else{
 					alert(result.msg);
 				}

@@ -13,9 +13,13 @@ var router = express.Router();
 
 /* 退出接口 */
 router.get("/loginout" , function( req , res , next ){
-	res.cookie("session_id" , null , 0);
-	req.session.user = {};
-	res.redirect("/");
+	req.session.destroy(function(err){
+		if(err){
+			console.log(err);
+		}else{
+			res.redirect("/");
+		}
+	})
 });
 
 /* 登陆请求 */
@@ -33,30 +37,14 @@ router.post("/login" , function(req , res , next){
 			res.json({"state":0 , "msg":"密码不正确"});
 			return next && next();
 		}
-		//设置session中的数据
-		req.session.user.name = result.name;
-		req.session.user.phone= result.phone;
-		req.session.user.id   = result.id;
-		req.session.user.session_id = req.sessionID;
-		res.cookie("session_id" , req.sessionID , { maxAge : 7200000 });
+		req.session.user = {
+			"name" : result.name,
+			"phone": result.phone,
+			"id": result.id
+		};
+
 		res.json({"state":1, "msg" : "login Success" , "data":result});
 	});
-});
-
-/* 登陆检查 */
-router.use(function(req , res , next){
-	/*if(!req.session.user.session_id){
-		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
-	}else{
-		next();
-	}*/
-
-	// test 去掉登陆检测
-	if(!req.session.user.id){
-		req.session.user.id = 1;
-		req.session.user.name = "master";
-	}
-	next();
 });
 
 /* =================== 类型相关请求 ============== */

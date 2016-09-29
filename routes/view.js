@@ -9,30 +9,23 @@ var express = require("express"),
 
 var router = express.Router();
 
-router.get("/" , function(req , res , next){
-	res.render("index");
-});
 
 /* need login page. */
 
 router.use(function(req , res , next){
-	
-	/*if(req.path == "/api/login" || req.path == "/api/loginout"){
-		next();
-		return;
-	}
-	if(!req.session.user.session_id){
-		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
+	if(!req.session.user && req.path != "/api/login"){
+		res.render("index");
 	}else{
 		next();
-	}*/
-
-	// test 去掉登陆检测
-	if(!req.session.user.id){
-		req.session.user.id = 1;
-		req.session.user.name = "master";
 	}
-	next();
+
+
+	console.log(123, req.session.user);
+});
+
+/* center page. */
+router.get("/" , function(req , res , next){
+	res.render("center");
 });
 
 /* type page. */
@@ -57,9 +50,4 @@ router.get("/stats" , function(req , res , next){
 
 
 module.exports = router;
-
-
-
-
-
 

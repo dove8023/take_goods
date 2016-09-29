@@ -18,9 +18,6 @@ router.use(function(req , res , next){
 	}else{
 		next();
 	}
-
-
-	console.log(123, req.session.user);
 });
 
 /* center page. */

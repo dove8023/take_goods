@@ -237,7 +237,6 @@ router.get("/type/delete" , function(req , res , next){
 router.post("/receive/addorder" , function(req , res , next){
 	try{
 		req.body = JSON.parse(req.body.data);
-		// console.log()
 	}catch(e){
 		res.json({"state": 0 , "msg":"参数不对"});
 		return next && next();

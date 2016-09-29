@@ -17,7 +17,7 @@ router.get("/" , function(req , res , next){
 
 router.use(function(req , res , next){
 	
-	if(req.path == "/api/login" || req.path == "/api/loginout"){
+	/*if(req.path == "/api/login" || req.path == "/api/loginout"){
 		next();
 		return;
 	}
@@ -25,14 +25,14 @@ router.use(function(req , res , next){
 		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
 	}else{
 		next();
-	}
+	}*/
 
 	// test 去掉登陆检测
-	/*if(!req.session.user.id){
+	if(!req.session.user.id){
 		req.session.user.id = 1;
 		req.session.user.name = "master";
 	}
-	next();*/
+	next();
 });
 
 /* type page. */

@@ -4,9 +4,9 @@
 
 
 var Sequelize = require("sequelize"),
-	config    = require("./config");
+	config    = require("../config");
 
-var sequelize = new Sequelize(config.database , config.user , config.password , { "host":config.host , "port":config.port , "timezone":config.timezone , logging:false });
+var sequelize = new Sequelize(config.database , config.user , config.password , { "host":config.host , "port":config.port , "timezone":config.timezone , logging:console.log });
 
 
 /* Users table */

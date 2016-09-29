@@ -10,7 +10,7 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	cookieParser = require("cookie-parser"),
 	session = require("express-session"),
-	db  = require("./setup"),
+	db  = require("./mysql/setup"),
 	favicon = require('serve-favicon'),
 	path = require("path"),
 	log4js = require("./log");
@@ -38,11 +38,7 @@ app.use(session({
 
 /* 日志配置，启用 */
 log4js.configure();
-
 app.use(log4js.useLog());
-
-
-
 
 
 //路劲设置
@@ -55,11 +51,6 @@ app.use(function(req , res , next){
 	if(!user){
 		user = req.session.user = {};
 	}
-
-	// console.log('%s %s %s' , req.method , req.url , req.path);
-	// logger.info(req.method);
-	// console.log(req.method);
-	// console.log(req.session.user);
 	next();
 });
 

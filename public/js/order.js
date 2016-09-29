@@ -113,7 +113,7 @@ require(["angular" , "angularCookies" , "./common/angular_config" , "./common/fi
 		$scope.getData = function(options){
 			options.limit = 50;
 			$http.post("/api/receive/list" , {
-				"begin" : options.begin,
+				"begin" : options.begin + " 00:00:00",
 				"end"   : options.end + " 23:59:59",
 				"limit" : options.limit,
 				"page"  : options.page

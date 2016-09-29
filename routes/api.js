@@ -6,7 +6,7 @@
 
 var express = require("express"),
 	logger  = require("morgan"),
-	db  = require("../doDB");
+	db  = require("../mysql/doDB");
 
 var router = express.Router();
 
@@ -45,22 +45,31 @@ router.post("/login" , function(req , res , next){
 
 /* 登陆检查 */
 router.use(function(req , res , next){
-	console.log("api");
-	if(!req.session.user.session_id){
+	/*if(!req.session.user.session_id){
 		res.send('<h1>Login First.</h1><a href="/">去登录</a>');
 	}else{
 		next();
-	}
+	}*/
 
 	// test 去掉登陆检测
-	/*if(!req.session.user.id){
+	if(!req.session.user.id){
 		req.session.user.id = 1;
 		req.session.user.name = "master";
 	}
-	next();*/
+	next();
 });
 
 /* =================== 类型相关请求 ============== */
+
+
+let JsonP = (req , res , obj) => {
+	if(req.query.callback){
+		res.jsonp(obj);
+	}else{
+		res.json(obj);
+	}
+}
+
 
 /* 获取类型列表 */
 router.get("/type/list" , function(req , res , next){
@@ -68,11 +77,11 @@ router.get("/type/list" , function(req , res , next){
 	db.Type.findAll({
 		"u_id" : req.session.user.id
 	} , function(result){
-		res.json({
+		JsonP(req , res , {
 			"state" : 1,
 			"msg"   : "查询成功",
 			"data"  : result
-		})
+		});
 	});
 });
 
@@ -98,6 +107,30 @@ router.post("/type/add" , function(req , res , next){
 	});
 });
 
+/* 添加类型 */
+router.get("/type/add" , function(req , res , next){
+	if(!req.query.name || !req.query.price){
+		JsonP(req , res , {
+			"state" : 0,
+			"msg"   : "参数不正确"
+		});
+		return;
+	}
+	db.Type.insert({
+		"name" :req.query.name,
+		"price":req.query.price,
+		"u_id" : req.session.user.id
+	} , function(result){
+		JsonP(req , res , {
+			"state" : 1,
+			"msg"   : "类型添加成功",
+			"data"  : result
+		});
+	});
+});
+
+
+
 /* 修改类型 */
 router.post("/type/update" , function(req , res , next){
 	if(!req.body.name || !req.body.price || !req.body.id){
@@ -105,6 +138,7 @@ router.post("/type/update" , function(req , res , next){
 			"state" : 0,
 			"msg"   : "参数不正确"
 		});
+			
 		return;
 	}
 
@@ -127,6 +161,36 @@ router.post("/type/update" , function(req , res , next){
 	});
 });
 
+/* 修改类型 */
+router.get("/type/update" , function(req , res , next){
+	if(!req.query.name || !req.query.price || !req.query.id){
+		JsonP(req , res , {
+			"state" : 0,
+			"msg"   : "参数不正确"
+		});
+		return;
+	}
+
+	db.Type.update({
+		"name":req.query.name,
+		"price":req.query.price,
+		"id"   : req.query.id
+	} , function(result){
+		if(result[0] === 1){
+			JsonP(req , res , {
+				"state" : 1,
+				"data"  : result
+			});
+		}else{
+			JsonP(req , res , {
+				"state" : 0,
+				"msg"  : "修改失败，请稍后重试"
+			});
+		}
+	});
+});
+
+
 /* 删除一个类型 */
 // set this note's state to 0.
 router.post("/type/delete" , function(req , res , next){
@@ -147,6 +211,31 @@ router.post("/type/delete" , function(req , res , next){
 			});
 		}else{
 			res.json({
+				"state" : 0,
+				"msg"  : "删除失败，请稍后重试"
+			});
+		}
+	});
+});
+
+router.get("/type/delete" , function(req , res , next){
+	if(!req.query.id){
+		JsonP(req , res , {
+			"state" : 0,
+			"msg"   : "参数不正确"
+		});
+		return;
+	}
+	db.Type.delete({
+		"id"   : req.query.id
+	} , function(result){
+		if(result[0] === 1){
+			JsonP(req , res , {
+				"state" : 1,
+				"data"  : result
+			});
+		}else{
+			JsonP(req , res , {
 				"state" : 0,
 				"msg"  : "删除失败，请稍后重试"
 			});

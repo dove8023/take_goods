@@ -4,8 +4,8 @@
  * author@Mr.He
 */
 
-const PORT = process.env.NODE_ENV == "development" ? 3000 : 80;
-
+// const PORT = process.env.NODE_ENV == "development" ? 3000 : 80;
+const PORT = 3000;  //using nginx proxy.
 var express      = require("express"),
 	bodyParser   = require("body-parser"),
 	cookieParser = require("cookie-parser"),

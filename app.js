@@ -19,6 +19,10 @@ var express      = require("express"),
 	RedisStore   = require("connect-redis")(session);
 
 var app = express();
+var client = new RedisStore(redisConfig);
+client.on("connect" , function(){
+	console.log("redis connect");
+})
 
 /* 配置express */
 app.set("view engine" , "jade");
@@ -39,7 +43,7 @@ app.use(session({
 		maxAge : 7200000 ,
 		httpOnly : true
 	},
-	"store" : new RedisStore(redisConfig)
+	"store" : client
 }));
 
 

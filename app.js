@@ -39,10 +39,7 @@ app.use(session({
 		maxAge : 7200000 ,
 		httpOnly : true
 	},
-	"store" : new RedisStore({
-		"host" : redisConfig.host,
-		"port" : redisConfig.port
-	})
+	"store" : new RedisStore(redisConfig)
 }));
 
 

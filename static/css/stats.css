@@ -1,0 +1,133 @@
+/*
+ * content @ type page style.
+ * time    @ 2016.6.23
+ * author  @ Mr.He
+*/
+
+.stats-list li{
+	overflow: hidden;
+	margin-bottom: 20px;
+	line-height: 35px;
+	border-bottom: 1px solid #ccc;
+	padding: 0 10px;
+	font-size: 16px;
+	clear: both;
+}
+.stats-list li:last-child{
+	border: none;
+}
+.stats-list span{
+	float: left;
+	margin-right: 25px;
+}
+.stats-list .num{
+	border-radius: 50%;
+    background: #090;
+    color: #fff;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    margin-top: 5px;
+}
+.stats-list .name{
+	font-size: 20px;
+	font-weight: bold;
+	width: 80px;
+}
+.stats-list .deal{
+	width: 100px;
+}
+.stats-list .weight{
+	width: 150px;
+}
+.stats-list .money{
+	width: 150px;
+}
+.stats-list .btn-info{
+	margin-right: 5px;
+}
+.stats-list .btn-default{
+	float: right;
+	margin-right: 0;
+}
+.stats-one-list{
+	clear: both;
+	margin: 0 0 20px 20px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 5px;
+}
+.stats-one-list dt{
+	overflow: hidden;
+	color: #967575;
+}
+.stats-one-list dd{
+	padding: 5px 0;
+	border-bottom: 1px dotted #ccc;
+}
+.stats-one-list dd:last-child{
+	border: none;
+}
+.stats-one-list span{
+	width: 70px;
+	/*background: rgba(0,0,0,0.3);*/
+	margin-right: 10px;
+	text-align: center;
+	line-height: 30px;
+}
+.stats-one-list span:nth-child(1) strong{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 3px;
+	background: #A2A6CC;
+	border-radius: 50%;
+	color: #fff;
+}
+.stats-one-list span:nth-child(2){
+	width: 115px;
+	font-size: 12px;
+	color: #ccc;
+}
+.stats-one-list span:nth-child(4){
+	width: 100px;
+}
+.stats-one-list span:nth-child(5){
+	width: 100px;
+}
+.stats-one-list span:nth-child(8){
+	text-align: center;
+}
+.stats-one-list span:nth-child(8) button{
+	float: none;
+}
+.stats-info .disabled{
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+.img-loading{
+	text-align: center;
+	padding: 30px;
+}
+.img-loading img{
+	width: 300px;
+}
+
+/*@keyframes loading
+{
+	from {transform:rotateZ(360deg);}
+	to {transform:rotateZ(0deg);}
+}
+@-webkit-keyframes loading
+{
+	from {transform:rotate(360deg);}
+	to {transform:rotate(0deg);}
+}*/
+

@@ -2,7 +2,7 @@ extends ./layout.jade
 
 block title
 	title 首页
-	link(href="/css/index.css",rel="stylesheet")
+	//- link(href="/css/index.css",rel="stylesheet")
 	meta(name="baidu-site-verification", content="mbNj7Rv9lG")
 block content
 
@@ -24,10 +24,11 @@ block content
 			.form-group.loginBox_btn.clearfix
 				input(type="submit" , value="登陆" , class="fl")
 				//- button(class="fl") 注册
-
+		img(src="/images/test.png", alt="")
 
 	section(style={"display":"none"})#registSection
 		h2
 			|注册界面
-
 	script(src="/js/index.js")
+
+	script(src="/js/dist/bundle.js")

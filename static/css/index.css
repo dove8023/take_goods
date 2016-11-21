@@ -1,0 +1,60 @@
+/*
+ * index Page style
+ * time @ 2016.5.26
+*/
+
+
+#example{
+	overflow: hidden;
+}
+section{
+	height: 100%;
+}
+.loginBox{
+	width: 300px;
+	margin: 30px auto;
+}
+.loginBox input{
+	padding: 5px 10px;
+}
+.form-group{
+	margin-bottom: 10px;
+}
+.form-group label{
+	display: inline-block;
+	width: 60px;
+}
+.loginBox_btn input,.loginBox_btn button{
+	width: 80px;
+	margin-right: 10px;
+	background: #ccc;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.index_manage{
+	width: 150px;
+	margin: 20px;
+}
+.index_manage li{
+	margin-bottom: 20px;
+	text-align: center;
+}
+.index_manage a{
+	display: block;
+	line-height: 35px;
+	border-radius: 5px;
+	background: green;
+	color: #fff;
+	text-decoration: none;
+}
+.index_manage a.active,.index_manage a.active:hover{
+	background: #515d51;
+}
+.index_manage a:hover{
+	background: #090;
+}
+.index_Box{
+	margin: 20px 20px 0 200px;
+}

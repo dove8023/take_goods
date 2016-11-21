@@ -16,7 +16,11 @@ var express      = require("express"),
 	favicon      = require('serve-favicon'),
 	path         = require("path"),
 	log4js       = require("./log"),
-	RedisStore   = require("connect-redis")(session);
+	RedisStore   = require("connect-redis")(session),
+	ejs 		 = require("ejs");
+var logger = require('morgan');
+
+
 
 var app = express();
 var client = new RedisStore(redisConfig);
@@ -25,11 +29,13 @@ client.on("connect" , function(){
 })
 
 /* 配置express */
-app.set("view engine" , "jade");
+app.engine("html" , ejs.renderFile);
+app.set("view engine" , "html");
+
 app.set("views" , __dirname + "/views");
 
-app.use(express.static(__dirname + "/public"));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(__dirname + "/static"));
+app.use(favicon(path.join(__dirname, '/static/images', 'favicon.ico')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -48,8 +54,12 @@ app.use(session({
 
 
 /* 日志配置，启用 */
-log4js.configure();
-app.use(log4js.useLog());
+/*log4js.configure();
+app.use(log4js.useLog());*/
+
+
+
+app.use(logger("dev"));
 
 
 //路劲设置

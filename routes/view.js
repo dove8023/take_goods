@@ -14,36 +14,42 @@ var router = express.Router();
 
 router.use(function(req , res , next){
 	if(!req.session.user && req.path != "/api/login"){
-		res.render("index");
+		res.render("login");
 	}else{
 		next();
 	}
 });
 
 /* center page. */
-router.get("/" , function(req , res , next){
-	res.render("center");
+router.all("/" , function(req , res , next){
+	res.render("index");
 });
 
-/* type page. */
-router.get("/type/" , function(req , res , next){
-	res.render("type");
-});
 
-/* receive page. */
-router.get("/receive" , function(req , res , next){
-	res.render("receiving");
-});
 
-/* order check page. */
-router.get("/order" , function(req , res , next){
-	res.render("order");
-});
 
-/* stats page. */
-router.get("/stats" , function(req , res , next){
-	res.render("stats");
-});
+/* ========== no longer use. =========== */
+
+
+// /* type page. */
+// router.get("/type/" , function(req , res , next){
+// 	res.render("type");
+// });
+
+// /* receive page. */
+// router.get("/receive" , function(req , res , next){
+// 	res.render("receiving");
+// });
+
+// /* order check page. */
+// router.get("/order" , function(req , res , next){
+// 	res.render("order");
+// });
+
+// /* stats page. */
+// router.get("/stats" , function(req , res , next){
+// 	res.render("stats");
+// });
 
 
 module.exports = router;

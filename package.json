@@ -1,19 +1,48 @@
 {
   "name": "take-goods",
   "version": "0.0.1",
+  "description": "using webpack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node"
+  },
+  "author": "Mr.He",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "bootstrap": "^3.3.7",
     "connect-redis": "^3.1.0",
     "cookie-parser": "^1.4.2",
     "cookie-session": "^2.0.0-alpha.1",
+    "ejs": "^2.5.2",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "history": "^4.3.0",
     "jade": "^1.11.0",
     "log4js": "^0.6.38",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
     "redis": "^2.6.2",
     "sequelize": "^3.23.2",
     "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "json-loader": "^0.5.4",
+    "postcss-loader": "^0.13.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "wepack": "^0.0.1"
   }
 }

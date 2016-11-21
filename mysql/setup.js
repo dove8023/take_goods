@@ -60,7 +60,12 @@ var Type = sequelize.define("Type" , {
 });
 
 
-
+var Hello = sequelize.define("Hello" , {
+	"u_id" : { type : Sequelize.INTEGER , allowNull : false },
+	"hello2" : { type : Sequelize.STRING , allowNull : false },
+	"hello3": { type : Sequelize.DECIMAL(9,2) , allowNull : false  },
+	"state": { type : Sequelize.CHAR(1) , allowNull : false , defaultValue : 1 }
+});
 
 
 

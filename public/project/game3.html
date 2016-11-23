@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑雪游戏</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="keywords" content="Alberta is a province of festival-goers, always keen to celebrate the finest in the arts, food and wine, music, sports and our multi-cultural heritage.">
+	<meta name="description" content="Alberta is a province of festival-goers, always keen to celebrate the finest in the arts, food and wine, music, sports and our multi-cultural heritage.">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/game3.css">
+	<link rel="stylesheet" href="css/screen.css">
+</head>
+<body>	
+	<div class="header" id="showTimeScroe" style="display: none;">
+		<span class="span">
+			<span id="usingTime">0</span>
+			<img src="images/zhuanpan.png" alt="" style="width:30px">
+		</span>
+		<span class="span">
+			<span id="realTimeScroe">0</span>
+			<img src="images/jifen.png" alt="" style="width:20px">
+		</span>
+	</div>
+
+	<section class="g3_index">
+		<button id="go" class="g1_go">
+			<img src="images/go.png" alt="拍照">
+		</button>
+	</section>
+	
+
+	<!-- 游戏界面 -->
+	<section class="g3" style="display:none;" id="PlayGame">
+		<div class="g3_bg"></div>
+		<div class="g3_line"></div>
+		<div class="g3_line2"></div>
+	
+		<div class="g3_box" id="gameBox">
+		</div>
+		<!-- deal touch , click change ski track  -->
+		<div class="g3_click one" id="leftHuman">&nbsp;</div>
+		<div class="g3_click two" id="rightHuman">&nbsp;</div>
+	</section>
+
+	<div class="cover" id="cover" style="display: none;"></div>
+	<div class="cover" id="cover2" style="display: none;"></div>
+
+	<section class="pc_rule" id="pc_rule" style="display: none;">
+		<img src="images/pc_rule.png" alt="">
+	</section>
+
+	<!-- 滑雪冲关提示 -->
+	<div class="cover_main" id="rule" style="display: none;top:100px;">		
+		<div class="cover_content">
+			<button id="rule_close" class="cover_close PC_gone">
+				&nbsp;&nbsp;	
+			</button>
+			<p class="cover_title">
+				<img src="images/shan2.png" alt="山">
+			</p>
+			<div class="rule_main g1_rule">
+				<h4>
+					<img src="images/litter_snowman.png" alt="snowman">
+					指尖滑雪大冲关规则:
+				</h4>
+				<p>
+					用左右手指控制两个滑雪者，躲避雪道上的障碍物<img src="images/text_shan.png" alt="icon">，并收集雪币<img src="images/text_xuebi.png" alt="icon">赢得积分，1个雪币积1分。如果不能成功躲避障碍，则游戏失败。
+				</p>				
+				<button id="firstBegin">
+					GO!
+				</button>
+			</div>
+		</div>			
+	</div>
+
+	<!-- 游戏结果展示 -->
+	<div class="cover_main" id="gameResult" style="display: none;">		
+		<div class="cover_content">
+			<button id="gameResultclose" class="cover_close PC_gone">
+				&nbsp;&nbsp;	
+			</button>
+			<p class="cover_title">
+				<img src="images/shan2.png" alt="山">
+			</p>
+			<div class="rule_main g3_gameover">
+				<br>
+				<h3 class="mb30" id="called">
+					
+				</h3>
+				<p class="mb20">
+					你赢取了<strong id="showScroe">26</strong>积分
+				</p>								
+				<button id="playAgain" class="g3_btn">
+					再玩一次
+				</button>
+			</div>
+		</div>			
+	</div>
+	
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/game3.js"></script>
+
+<script>
+    function game3InitShare( ) {
+        //还没有玩游戏呢
+        if (window.usingTime == 0) {
+
+        } else {
+            var level = '顶级达人';
+            var percent = parseInt((7 + Math.random() * 3) * 10);
+            var text;
+            if (window.scroe <= 30) {
+            	level = '菜鸟';
+                percent = parseInt((1 + Math.random() * 2) * 10);
+                text = "我赢得了"+window.scroe+"雪币,超过了"+percent+"%玩家,属于滑雪菜鸟,想知道你的级别吗?快来挑战!"
+            } else if (window.scroe > 30 && window.scroe <= 60 ) {
+            	level = '滑雪大咖';
+                percent = parseInt( (3 + Math.random() * 4 )* 10);
+                text = "我赢得了"+window.scroe+"雪币,超过了"+percent+"%玩家,升级为滑雪大咖,不服来战!";
+            } else {
+            	text = "我赢得了"+window.scroe+"雪币,超过了"+percent+"%玩家,升级为顶级达人,不服来战!";
+            }
+            
+
+        }
+    }
+    
+    game3InitShare();
+</script>

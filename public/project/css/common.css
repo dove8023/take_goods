@@ -1,0 +1,105 @@
+/* 
+	通用css样式
+ */
+
+button,ul{
+	border:none;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255,0,0,0);
+}
+span,li,ul{
+	-webkit-tap-highlight-color: rgba(255,0,0,0);
+}
+img{
+	width: 100%;
+	height: auto;
+}
+
+/* logo */
+.m_logo{
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	z-index: 100;
+	width: 100px;
+	height: auto;
+}
+
+/* share btn */
+.m_share{
+	position: fixed;
+	top: 50%;
+	right: 3px;
+	z-index: 1;
+	margin-top: -35px;
+	width: 65px;
+}
+
+.weixin_share{
+	position: fixed;
+	width:90%;
+	height: 100%;
+	z-index: 11;
+	top: 5px;
+	margin-left: 5%;
+}
+
+/* cover */
+.cover{
+	position: fixed;
+	z-index: 10;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.5;
+}
+
+/* 游戏规则提示 */
+.cover_main{
+	width: 90%;
+	max-height: 79%;
+	position: fixed;
+	z-index: 11;
+	top: 110px;
+	margin-left: 5%;
+}
+.cover_content{
+	position: relative;
+	width: 100%;
+}
+.cover_close{
+	position: absolute;
+	z-index: 3;
+	width: 60px;
+	height: 60px;
+	right: 0;
+	top: -70px;
+	background: url("../images/close.png") no-repeat center center;
+	background-size: 100%;
+}
+.rule_main{
+	background-color: #77b900;
+	padding: 30px 20px 30px;
+	/*max-height: 500px;*/
+	/*overflow: scroll;*/
+	text-align: center;
+}
+.overflow1 {
+	max-height: 500px;
+	overflow: scroll;
+}
+.more_game{
+	text-decoration: underline;
+	color: #fff;
+	display: block;
+	text-align: center;
+	font-size: 1.5em;
+	margin: 20px auto 0;
+}
+@media (max-width: 360px){
+	.more_game{
+		font-size: 1.2em;
+	}
+}

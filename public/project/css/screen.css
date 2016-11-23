@@ -1,0 +1,574 @@
+/* 
+
+	各个页面适配
+
+ */
+
+
+@media ( max-width: 370px ){
+	span.m_logo{
+		width: 80px;
+		top: 10px;
+	}
+	span.m_share{
+		width: 50px;
+	}
+	/*首页部分*/
+	div.index_content1{
+		padding-top: 180px;
+		height: 265px;
+	    background: url("../images/geijing.png") no-repeat center 0%;
+	    background-size: 100%;
+	    margin-top: 0;
+	}
+	p.index_content_score{
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+	div.index_game_box{
+		width: 240px;
+		height: 240px;
+		padding: 10px;
+	}
+	p.rule_main.rule_main2{
+		max-height: 345px;
+	}
+	div.go_game{
+		padding-top: 280px;
+		width: 200px;
+	}
+	div.go_game span{
+		margin-bottom: 10px;
+		line-height: 45px;
+		height: 50px;
+	}
+	.go_game span a{
+		font-size: 20px;
+	}
+	footer.footer{
+		line-height: 70px;
+		height: 70px;
+	}
+	.shan{
+		margin-top: -24px;
+	}
+	.go_down{
+		width: 30px;
+		margin-left: -15px;
+	}
+
+	/*common*/
+	div.cover_main{
+		top: 55px;
+	}
+	/*秒拍大战*/
+	div.g1_rule{
+		padding: 10px 8% 10px;
+	}
+	div.g1_rule h4{
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	div.g1_rule p{
+		font-size: 14px;
+	}
+	div.g1_rule dl{
+		margin-bottom: 10px;
+	}
+	div.g1_rule dl dt{
+		width: 50px;
+		margin: 0 15px 0 10px;
+	}
+	button.g1_go{
+		top: 75%;
+	}
+	div.camera{
+		width: 270px;
+		height: 270px;
+		margin:0 0 0 -135px;
+	}
+	div.camera div{
+		line-height: 270px;
+	}
+	div.snow_man_father{
+		width: 276px;
+		height: 276px;
+		margin:0 0 0 -138px;
+	}
+	div.snow_man_father.take2{
+		transform:  rotateZ(15deg) scale(0.5) translate(-175px,-150px);
+		-webkit-transform:  rotateZ(15deg) scale(0.5) translate(-175px,-150px);
+	}
+	p.share_text{
+		margin-bottom: 30px;
+		font-size: 16px;
+	}
+	h2.g1_score{
+		font-size: 18px;
+		margin: 0 auto 10px;
+	}
+	p.share_text1{
+		margin: 0 auto 5px;
+		font-size: 18px;
+	}
+	p.share_text1.mt30{
+		margin-top: 60px;
+	}
+	p.share_text1.nobold{
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+	section.g1_end button{
+		margin: 0 auto 20px;
+		line-height: 45px;
+		font-size: 22px;
+		width: 80%;
+	}
+	
+
+	/*一站到底知识问答*/
+	
+	.question_p{
+		height: 170px;
+	}
+	.question_list{
+		width: 280px;
+		margin: 0 auto;
+	}
+	.g1_rule p{
+		line-height: 25px;
+	}
+	.g1_rule .pre_go{
+		height: 65px;
+	}
+	.g1_rule button{
+		font-size: 20px;
+		line-height: 40px;
+		margin-bottom: 20px;
+	}
+	.cover_close{
+		width: 40px;
+		height: 40px;
+		top: -35px;
+	}
+	.question_list li{
+		font-size: 16px;
+		text-align: center;
+	}
+	.question_list li:nth-child(1){
+		padding: 25px 30px 20px 90px;
+	}
+	.question_list li:nth-child(2){
+		padding: 15px 0;
+	}
+	.question_list li:nth-child(3){
+		padding: 20px 0 20px 15px;
+	}
+	.question_list li:nth-child(4){
+		padding: 10px 0 20px 30px;
+	}
+	.question_list li:nth-child(5){
+		padding: 5px 10px 10px 0;
+	}
+	.question_list li:nth-child(6){
+		padding: 18px 0;
+	}
+	.question_list li:nth-child(7){
+		padding: 15px 0;
+	}
+	.qc_question li{
+		line-height: 25px;
+		padding: 5px 0;
+	}
+	.qc_question li span{
+		font-size: 16px;
+	}
+	.a_number{
+		width: 22px;
+		height: 30px;
+		line-height: 26px;
+		padding-left: 8px;
+		color: #70ae01;
+		margin-right: 5px;
+	}
+	.g1_rule h5{
+		font-size: 18px;
+	}
+	.finish_img{
+		width: 65px;
+		margin-bottom: 20px;
+	}
+	.m_share{
+		top: 80%;
+	}
+	div.answer_result .wrongtip{
+		margin-bottom: 5px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	div.answer_result button{
+		line-height: 40px;
+		font-size: 22px;
+		width: 90%;
+		margin: 0 auto;
+	}
+	.answer_result .answer2{
+		margin-bottom: 5px;
+	}
+	div.answer_result .text{
+		margin-bottom: 0;
+		font-weight: bold;
+		line-height: 22px;
+	}
+	.aqc_img{
+		padding-top: 18px;
+		max-height: 200px;
+	}
+
+	/*滑雪游戏*/
+	div.header{
+		height: 55px;
+		line-height: 55px;
+	}
+	.g3_gameover h3{
+		font-size: 18px;
+	}
+}
+
+@media ( min-width: 370px ) and ( max-width: 400px ){
+
+	/*首页部分*/
+	div.index_content1{
+		padding-top: 190px;
+		height: 290px;
+	    background: url("../images/geijing.png") no-repeat center 0%;
+	    background-size: 100%;
+	}
+	p.index_content_score{
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	div.index_game_box{
+		width: 280px;
+		height: 280px;
+		padding: 10px;
+	}
+	p.rule_main.rule_main2{
+		max-height: 400px;
+	}
+	div.go_game{
+		padding-top: 300px;
+	}
+	div.go_game span{
+		margin-bottom: 18px;
+	}
+	footer.footer{
+		line-height: 80px;
+		height: 80px;
+	}
+
+
+
+	/*秒拍大战*/
+	div.g1_rule{
+		padding: 10px 8% 20px;
+	}
+	div.g1_rule h4{
+		font-size: 22px;
+		margin-bottom: 10px;
+	}
+	div.g1_rule p{
+		font-size: 16px;
+	}
+	div.g1_rule dl{
+		margin-bottom: 10px;
+	}
+	div.g1_rule dl dt{
+		width: 50px;
+		margin: 0 15px 0 10px;
+	}
+	button.g1_go{
+		top: 75%;
+	}
+	div.camera{
+		width: 270px;
+		height: 270px;
+		margin:0 0 0 -135px;
+	}
+	div.camera div{
+		line-height: 270px;
+	}
+	div.snow_man_father{
+		width: 276px;
+		height: 276px;
+		margin:0 0 0 -138px;
+	}	
+	p.share_text{
+		margin-bottom: 50px;
+	}
+	h2.g1_score{
+		font-size: 25px;
+		margin: 0 auto 10px;
+	}
+	p.share_text1{
+		margin: 0 auto 15px;
+		font-size: 20px;
+	}
+	section.g1_end button{
+		margin: 0 auto 25px;
+	}
+
+	/*一站到底知识问答*/
+	.question_img{
+		width:180px;
+		position: absolute;
+		top: 137px;
+		left: 50%;
+		margin-left: -80px;
+	}
+	.question_p{
+		height: 165px;
+	}
+	.g1_rule .pre_go{
+		height: 65px;
+	}
+	.g1_rule button{
+		font-size: 20px;
+		line-height: 50px;
+		margin-bottom: 20px;
+	}
+	.cover_close{
+		width: 50px;
+		height: 50px;
+		top: -45px;
+	}
+	.answer_question{
+		min-height: 260px;
+	}
+	.qc_question li{
+		line-height: 25px;
+		padding: 5px 0;
+	}
+	.qc_question li span{
+		font-size: 16px;
+	}
+	.a_number{
+		width: 20px;
+		height: 28px;
+		line-height: 24px;
+		padding-left: 8px;
+		color: #70ae01;
+		margin-right: 5px;
+	}
+	.g1_rule h5{
+		font-size: 18px;
+	}
+	.finish_img{
+		width: 65px;
+		margin-bottom: 20px;
+	}
+	.m_share{
+		top: 72%;
+	}
+	div.answer_result button{
+		line-height: 50px;
+	}
+	.g1_game_p{
+		margin-bottom: 10px;
+	}
+
+
+	/*滑雪游戏*/
+	div.header{
+		height: 80px;
+		line-height: 80px;
+	}
+}
+/*滑雪游戏*/
+	div.header{
+		height: 80px;
+		line-height: 80px;
+	}
+
+
+/*iphone 4*/
+@media ( max-height: 490px ){
+
+	/*首页*/
+	span.m_logo{
+		width: 85px;
+	}
+	div.index_content1{
+		height: 220px;
+	}
+	p.rule_main.rule_main2{
+		max-height: 270px;
+	}
+	section.index_2{
+	    background: url("../images/youxibg.jpg") no-repeat center 12%;
+    	background-size: 100%;
+	}
+	div.go_game{
+		width: 200px;
+		padding-top: 225px;
+	}
+	div.go_game span{
+		margin-bottom: 10px;
+	}
+	footer.footer{
+		line-height: 70px;
+		height: 70px;
+	}
+
+
+
+
+	/*common*/
+	button.cover_close{
+		top: -40px;
+	}
+	div.cover_main{
+		top: 60px;
+	}
+
+
+
+	/*秒拍大战*/
+	div.g1_rule{
+		padding: 10px 8% 10px;
+	}
+	div.g1_rule h4{
+		font-size: 22px;
+		margin-bottom: 5px;
+	}
+	div.g1_rule p{
+		font-size: 14px;
+		line-height: 22px;
+	}
+	div.g1_rule dl{
+		margin-bottom: 5px;
+	}
+	div.g1_rule dl dt{
+		width: 50px;
+		margin: 0 15px 0 10px;
+	}
+	button.g1_go{
+		top: 80%;
+	}
+	#firstBegin{
+		line-height: 50px;
+	}
+	div.camera{
+		width: 270px;
+		height: 270px;
+		margin:0 0 0 -135px;
+	}
+	div.camera div{
+		line-height: 270px;
+	}
+	div.snow_man_father{
+		width: 276px;
+		height: 276px;
+		margin:0 0 0 -138px;
+	}
+	div.snow_man_father.take2{
+		transform:  rotateZ(15deg) scale(0.5) translate(-175px,-150px);
+		-webkit-transform:  rotateZ(15deg) scale(0.5) translate(-175px,-150px);
+	}
+	p.share_text{
+		margin-bottom: 18px;
+	}
+	h2.g1_score{
+		font-size: 23px;
+		margin: 0 auto 10px;
+	}
+	p.share_text1{
+		margin: 0 auto 10px;
+	}
+	p.share_text1.nobold{
+		margin-bottom: 10px;
+	}
+	section.g1_end button{
+		margin: 0 auto 15px;
+		line-height: 50px;
+	}
+
+
+
+
+	/*一站到底知识问答*/
+	.question_img{
+		width:160px;
+		position: absolute;
+		top: 85px;
+		left: 50%;
+		margin-left: -70px;
+	}
+	.question_p{
+		height: 110px;
+	}
+	.g1_rule .pre_go{
+		height: 20px;
+	}
+	.finish_img{
+		margin-bottom: 10px;
+	}
+	.g1_rule h5{
+		margin-bottom: 0px;
+	}
+	.g1_rule button{
+		margin-bottom: 15px;
+	}
+
+	div.answer_result{
+		padding: 30px 0 20px;
+	}
+	div.answer_result .wrongtip{
+		margin-bottom: 10px;
+	}
+	div.answer_result button{
+		line-height: 50px;
+	}
+
+}
+
+
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone5 */
+
+	/*首页*/
+	span.m_logo{
+		width: 75px;
+		top: 5px;
+	}
+	div.index_content1{
+		padding-top: 160px;
+		height: 235px;
+	    background: url("../images/geijing.png") no-repeat center 0%;
+	    background-size: 100%;
+	    margin-top: -25px;
+	}
+	.shan{
+		margin-top: -34px;
+	}
+	p.index_content_score{
+		font-size: 16px;
+	}
+	.index_btn{
+		width: 90%;
+		height:40px;
+		margin: 0 auto;
+		line-height: 40px;
+	}
+	div.go_game{
+		padding-top: 255px;
+	}
+	p.share_text{
+		width: 120px;
+		margin-right: -10px;
+		line-height: 22px;
+	}
+
+	.g3_btn{
+		line-height: 45px;
+	}
+}

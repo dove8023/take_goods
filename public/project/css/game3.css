@@ -1,0 +1,218 @@
+/* 
+	一站到底游戏样式
+	以 414px为基准，320px使用响应式
+ */
+
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+section{
+	height: 100%;
+}
+.g3{
+	background-color: #fff;
+}
+
+
+/* 游戏背景设置 */
+
+.g3_bg{
+	float: right;
+	width: 50%;
+	height: 100%;
+	background-color: #43484b;
+}
+.g3_line,
+.g3_line2{
+	position: absolute;
+	height: 100%;
+	width: 3px;
+	top: 0;
+	z-index: 2;
+}
+.g3_line{
+	left: 24.5%;
+	background: url("../images/linelv.gif") no-repeat center center;
+}
+.g3_line2{
+	right: 24.5%;
+	background: url("../images/line.gif") no-repeat center center;
+}
+
+
+/*游戏元素样式*/
+
+.g3_box{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+}
+.g3_box img{
+	width: 65px;
+	position: absolute;
+	left: 5px;
+	z-index: 3;
+}
+.g3_box span{
+	position: absolute;
+	top: 82%;
+}
+.g3_click{
+	position: absolute;
+	z-index: 2;
+	width: 50%;
+	height: 100%;
+	/*background: rgba(0,0,0,.3);*/
+}
+.g3_click.one{
+	top: 0;
+	left: 0;
+}
+.g3_click.two{
+	top: 0;
+	left: 50%;
+}
+
+
+/*  other  */
+.g1_go {
+    position: absolute;
+    z-index: 0;
+    top: 75%;
+    margin-left: 25%;
+    width: 50%;
+}
+.g3_index{
+    background: url("../images/beijing.jpg") no-repeat center center;
+    background-size: 100%;
+}
+.g1_rule{
+	padding: 10px 10% 30px;
+}
+.g1_rule h4{
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	font-size: 25px;
+	line-height: 35px;
+	margin-bottom: 25px;
+}
+.g1_rule h4 img{
+	width: 40px;
+}
+.g1_rule p{
+	margin-bottom: 20px;
+	text-align: left;
+	font-size: 18px;
+	line-height: 28px;
+}
+.g1_rule p strong{
+	color: #fff;
+}
+.g1_rule p img{
+	width: 60px;
+	margin-top: -5px;
+	height: auto;
+}
+.g1_rule button{
+	width: 100%;
+	line-height: 60px;
+	color: #fff;
+	background-color: #10aed5;
+	font-size: 35px;
+	display: block;
+	font-weight: bold;
+	letter-spacing: 2px;
+	border-radius: 5px;
+}
+.g3_btn{
+	width: 100%;
+    line-height: 60px;
+    color: #fff;
+    font-size: 25px;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    font-family: "Microsoft Yahei";
+}
+.g3_gameover{
+	padding: 20px 40px 20px;
+	color: #fff;
+}
+.g3_gameover h4{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.g3_gameover h3{
+	font-size: 20px;
+	font-weight: bold;
+}
+.g3_gameover h3:nth-child(3){
+	margin-bottom: 10px;
+}
+.g3_gameover p{
+	text-align: center;
+	font-size: 18px;
+}
+.g3_gameover p img{
+	width: 40%;
+}
+.g3_gameover button:nth-of-type(1){
+	background-color: #fff;
+	color: #74bd00;
+	margin-bottom: 20px;
+}
+.g3_gameover button:nth-of-type(2){
+	background-color: #05c5f2;
+	color: #fff;
+}
+.more_game.g3_more_game{
+	display: inline-block;
+}
+/*新增*/
+.header{
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	background-color: #77b900;
+	position: absolute;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	text-align: center;
+}
+.header .span{
+	float: right;
+	margin-right: 10px;
+}
+.header .span span{
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	line-height: 80px;
+}
+.header .span:nth-child(2){
+	margin-right: 26%;
+}
+
+.pc_rule{
+	position: absolute;
+	z-index: 3;
+	top: 0;
+	cursor: pointer;
+}
+
+span.m_share{
+	top: 60%;
+	z-index: 12;
+}
+#cover2{
+	z-index: 20;
+}
+div.weixin_share{
+	z-index: 21;
+}
